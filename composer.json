@@ -1,12 +1,20 @@
 {
     "name": "raugadh/fila-starter",
     "type": "project",
+<<<<<<< Updated upstream
     "license": "MIT",
+=======
+>>>>>>> Stashed changes
     "description": "Laravel Filament Starter.",
     "keywords": [
         "framework",
         "laravel",
+<<<<<<< Updated upstream
         "Filament",
+=======
+        "filament",
+        "starter kit"
+>>>>>>> Stashed changes
     ],
     "require": {
         "php": "^8.1",
