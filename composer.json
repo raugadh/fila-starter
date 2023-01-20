@@ -1,12 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "RAugadh/FilaStarter",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "license": "MIT",
+    "description": "Laravel Filament Starter.",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "Filament",
     ],
-    "license": "MIT",
     "require": {
         "php": "^8.0.2",
         "alperenersoy/filament-export": "^0.2.6",
