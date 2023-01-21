@@ -9,7 +9,7 @@ class MyProfile extends BaseProfile
 {
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
     protected static function getNavigationGroup(): ?string
     {

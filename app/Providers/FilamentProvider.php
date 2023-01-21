@@ -36,7 +36,8 @@ class FilamentProvider extends ServiceProvider
 
             ]);
 
-            \Z3d0X\FilamentLogger\Resources\ActivityResource::navigationSort(2);
+            \Z3d0X\FilamentLogger\Resources\ActivityResource::navigationSort(3);
+
             Filament::registerNavigationGroups([
                 'Settings',
             ]);

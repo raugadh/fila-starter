@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory()->create([
+        $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
         ]);
+
+        $user->assignRole('super_admin');
     }
 }

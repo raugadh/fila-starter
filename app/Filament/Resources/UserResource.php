@@ -7,8 +7,11 @@ use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Grid;
 use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\ListRecords;
@@ -43,24 +46,40 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Form')
+                Grid::make(2)
                     ->schema([
                         TextInput::make('name')
                             ->minLength(2)
                             ->maxLength(255)
+                            ->columnSpan('full')
                             ->required(),
                         TextInput::make('email')
                             ->required()
+                            ->columnSpan('full')
                             ->email(),
 
                         TextInput::make('password')
                             ->password()
                             ->confirmed()
+                            ->columnSpan(1)
                             ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                             ->dehydrated(fn ($state) => filled($state))
                             ->required(fn (string $context): bool => $context === 'create'),
-                        TextInput::make('password_confirmation'),
-                    ])->columns(1),
+                        TextInput::make('password_confirmation')
+                            ->required(fn (string $context): bool => $context === 'create')
+                            ->columnSpan(1)
+                            ->password(),
+                    ]),
+
+                Section::make('Roles')
+                    ->schema([
+                        Select::make('roles')
+                            ->required()
+                            ->multiple()
+                            ->relationship('roles', 'name')
+                            ->label('Roles'),
+                    ])
+                    ->columns(1),
 
                 Section::make('Timestamps')
                     ->schema([
@@ -85,6 +104,7 @@ class UserResource extends Resource
                 TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
+                TagsColumn::make('roles.name'),
                 TextColumn::make('created_at')
                     ->dateTime(),
             ])
