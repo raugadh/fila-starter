@@ -18,20 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('data', function () {
-    Artisan::call('migrate:fresh', [
-        '--force' => true
-    ]);
-    Artisan::call('shield:generate', [
-        '--all' => true
-    ]);
-    Artisan::call('db:seed', [
-        '--force' => true
-    ]);
+    Artisan::call('project:init');
     return redirect(url('/'));
 });
+
 Route::get('store', function () {
     Artisan::call('storage:link', [
         '--relative' => true
     ]);
     return redirect(url('/'));
 });
+
