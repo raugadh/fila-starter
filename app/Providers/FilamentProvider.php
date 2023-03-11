@@ -4,8 +4,11 @@ namespace App\Providers;
 
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
+use Filament\Notifications\Notification;
+use Filament\Pages\Page;
 use Illuminate\Foundation\Vite;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\ValidationException;
 
 class FilamentProvider extends ServiceProvider
 {
@@ -29,6 +32,13 @@ class FilamentProvider extends ServiceProvider
         Filament::serving(function () {
             // Using Vite
             Filament::registerViteTheme('resources/css/filament.css');
+
+            Page::$reportValidationErrorUsing = function (ValidationException $exception) {
+                Notification::make()
+                    ->title($exception->getMessage())
+                    ->danger()
+                    ->send();
+            };
 
             Filament::registerUserMenuItems([
 
