@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
+import { splitVendorChunkPlugin } from "vite";
+import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
     plugins: [
@@ -11,5 +13,7 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        splitVendorChunkPlugin(),
+        viteCompression(),
     ],
 });

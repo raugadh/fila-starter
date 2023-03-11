@@ -1,4 +1,7 @@
 {
+  "_vendor-2f7d4a99.js": {
+    "file": "assets/vendor-2f7d4a99.js"
+  },
   "resources/css/app.css": {
     "file": "assets/app-ec7baca3.css",
     "isEntry": true,
@@ -10,7 +13,10 @@
     "src": "resources/css/filament.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-b61847cd.js",
+    "file": "assets/app-e649291b.js",
+    "imports": [
+      "_vendor-2f7d4a99.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
   }

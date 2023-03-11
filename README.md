@@ -4,24 +4,24 @@ A Starter Kit For Filament with most basic necessities pre-configured.
 
 ## Packages
 
-[Laravel](https://github.com/laravel/laravel)\
-[Livewire](https://github.com/livewire/livewire)\
+[Laravel](https://github.com/laravel/laravel)  
+[Livewire](https://github.com/livewire/livewire)  
 [Filament](https://github.com/filamentphp/filament)
 
 ### Filament Plugins Installed/Pre-configured
 
--   Filament Shield
--   Filament Breezy Auth
--   Logger
--   Filament Export
--   Static Asset Handler
--   Tall Interactive
--   Components
+- Filament Shield
+- Filament Breezy Auth
+- Logger
+- Filament Export
+- Static Asset Handler
+- Tall Interactive
+- Components
 
 Other dev dependencies
 
--   Laravel debugbar
--   Laravel ide helper
+- Laravel debugbar
+- Laravel ide helper
 
 Notes: Sheild configured to create only these permisions
 
@@ -43,7 +43,7 @@ Add to existing project
 
 Deployment
 
--   configure env for database.
+- configure env for database.
 
 ```bash
   php artisan project:init
@@ -54,18 +54,17 @@ Deployment
 
 command runs following in succession
 
--   Migrate
--   Shield Generate -all
--   Seed database
--   clear cache
+- Migrate
+- Shield Generate -all
+- Seed database
+- clear cache
 
 must be followed in this sequence to generate roles.
 
 command can also be run through route
 
-```
-    APP_URL/data
-
+```sh
+APP_URL/data
 ```
 
 Generate Static Assets
