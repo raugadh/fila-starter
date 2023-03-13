@@ -15,6 +15,7 @@ A Starter Kit For Filament with most basic necessities pre-configured.
 - Logger
 - Filament Export
 - Static Asset Handler
+- Themes Plugin
 - Tall Interactive
 - Components
 

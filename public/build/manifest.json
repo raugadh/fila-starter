@@ -3,17 +3,12 @@
     "file": "assets/vendor-2f7d4a99.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-ec7baca3.css",
+    "file": "assets/app-ab5a3b09.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
-  "resources/css/filament.css": {
-    "file": "assets/filament-89ecc73a.css",
-    "isEntry": true,
-    "src": "resources/css/filament.css"
-  },
   "resources/js/app.js": {
-    "file": "assets/app-e649291b.js",
+    "file": "assets/app-fae3bcf0.js",
     "imports": [
       "_vendor-2f7d4a99.js"
     ],

@@ -6,11 +6,7 @@ import viteCompression from "vite-plugin-compression";
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                "resources/css/app.css",
-                "resources/js/app.js",
-                "resources/css/filament.css",
-            ],
+            input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
         splitVendorChunkPlugin(),

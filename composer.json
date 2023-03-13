@@ -24,6 +24,7 @@
         "livewire/livewire": "^2.12",
         "ralphjsmit/laravel-filament-components": "^1.1",
         "ralphjsmit/tall-interactive": "^0.9.0",
+        "yepsua/filament-themes": "^0.2.1",
         "z3d0x/filament-logger": "^0.5.0"
     },
     "require-dev": {
