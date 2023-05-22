@@ -62,7 +62,7 @@ return [
     |
     */
 
-    'home_url' => '/',
+    'home_url' => env('APP_URL', '/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,7 @@ return [
     |
     */
 
-    'dark_mode' => false,
+    'dark_mode' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -241,7 +241,7 @@ return [
         'max_content_width' => '6xl',
         'notifications' => [
             'vertical_alignment' => 'top',
-            'alignment' => 'right',
+            'alignment' => 'center',
         ],
         'sidebar' => [
             'is_collapsible_on_desktop' => true,
@@ -262,7 +262,7 @@ return [
     |
     */
 
-    'favicon' => null,
+    'favicon' => asset('favicon.ico'),
 
     /*
     |--------------------------------------------------------------------------

@@ -1,16 +1,54 @@
 {
-  "_vendor-2f7d4a99.js": {
-    "file": "assets/vendor-2f7d4a99.js"
+  "_@alpinejs-0c198d27.js": {
+    "file": "assets/@alpinejs-0c198d27.js",
+    "imports": [
+      "_focus-trap-ed8de6f5.js",
+      "_tabbable-5e3a216d.js"
+    ]
+  },
+  "_@awcodes-00fa6932.js": {
+    "file": "assets/@awcodes-00fa6932.js"
+  },
+  "_@vue-45111410.js": {
+    "file": "assets/@vue-45111410.js"
+  },
+  "_alpinejs-db4ccde5.js": {
+    "file": "assets/alpinejs-db4ccde5.js",
+    "imports": [
+      "_@vue-45111410.js"
+    ]
+  },
+  "_axios-4a70c6fc.js": {
+    "file": "assets/axios-4a70c6fc.js"
+  },
+  "_focus-trap-ed8de6f5.js": {
+    "file": "assets/focus-trap-ed8de6f5.js",
+    "imports": [
+      "_tabbable-5e3a216d.js"
+    ]
+  },
+  "_lodash-fb661e38.js": {
+    "file": "assets/lodash-fb661e38.js"
+  },
+  "_tabbable-5e3a216d.js": {
+    "file": "assets/tabbable-5e3a216d.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-ab5a3b09.css",
+    "file": "assets/app-dfdeebf6.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-fae3bcf0.js",
+    "file": "assets/app-babaeb38.js",
     "imports": [
-      "_vendor-2f7d4a99.js"
+      "_lodash-fb661e38.js",
+      "_axios-4a70c6fc.js",
+      "_alpinejs-db4ccde5.js",
+      "_@alpinejs-0c198d27.js",
+      "_@awcodes-00fa6932.js",
+      "_@vue-45111410.js",
+      "_focus-trap-ed8de6f5.js",
+      "_tabbable-5e3a216d.js"
     ],
     "isEntry": true,
     "src": "resources/js/app.js"
