@@ -12,8 +12,10 @@
     "require": {
         "php": "^8.1",
         "alperenersoy/filament-export": "^0.2.6",
+        "archilex/filament-toggle-icon-column": "^1.0",
         "awcodes/filament-gravatar": "^1.0",
         "bezhansalleh/filament-shield": "^2.3",
+        "cviebrock/eloquent-sluggable": "^10.0",
         "filament/filament": "^2.16",
         "guzzlehttp/guzzle": "^7.2",
         "hollyit/filament-static-assets": "^0.1.3",
@@ -22,6 +24,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.12",
+        "mohamedsabil83/filament-forms-tinyeditor": "^1.7",
         "ralphjsmit/laravel-filament-components": "^1.1",
         "ralphjsmit/tall-interactive": "^0.9.0",
         "yepsua/filament-themes": "^0.2.1",
@@ -60,6 +63,7 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
             "@php artisan filament:upgrade",
             "@php artisan filament:cache-assets",
+            "@php artisan vendor:publish --tag=filament-forms-tinyeditor-assets --force",
             "@php artisan ide-helper:generate"
         ],
         "post-root-package-install": [
