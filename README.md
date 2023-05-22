@@ -12,12 +12,16 @@ A Starter Kit For Filament with most basic necessities pre-configured.
 
 - Filament Shield
 - Filament Breezy Auth
-- Logger
+- Filament Logger
 - Filament Export
-- Static Asset Handler
-- Themes Plugin
-- Tall Interactive
-- Components
+- Filament Static Asset Handler
+- Filament Themes Plugin
+- Filament Tiny Editor
+- Filament Toggle Icon Column
+- Filament Tall Interactive
+- Filament Gravatar
+- Filament Components
+- cviebrock Eloquent Sluggable
 
 Other dev dependencies
 
@@ -50,6 +54,8 @@ Deployment
   php artisan project:init
 
 ```
+
+##### add DEBUGBAR_ENABLED=true to env to enable debugbar
 
 ### Note: Whenever new Resource or Page is Added Run `project:init` to migrate and create permissions.
 
