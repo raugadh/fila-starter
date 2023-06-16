@@ -34,6 +34,6 @@ class ProjectInit extends Command
         $this->call('db:seed', [
             '--force' => true
         ]);
-        $this->call('optimize');
+        $this->call('optimize:clear');
     }
 }
