@@ -20,7 +20,7 @@ Notes: Sheild configured to create only these permisions
 
 `'view','view_any','create','update','delete','delete_any',`
 
-### Installtion
+### Installation
 
 Create New Project
 
