@@ -11,10 +11,17 @@
     ],
     "require": {
         "php": "^8.1",
+        "awcodes/light-switch": "^1.0",
+        "awcodes/overlook": "^2.0",
+        "bezhansalleh/filament-shield": "^3.0",
+        "filament/filament": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
+        "jeffgreco13/filament-breezy": "^2.1",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.0",
+        "z3d0x/filament-logger": "^0.6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -40,13 +47,11 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan filament:upgrade",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta",
             "@php artisan optimize:clear"
         ],
         "post-root-package-install": [
