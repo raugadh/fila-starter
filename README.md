@@ -1,4 +1,4 @@
-```sh
+
 # FilaStarter Kit
 
 A Starter Kit For Filament with most basic necessities pre-configured.
