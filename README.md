@@ -1,74 +1,85 @@
-
-# FilaStarter Kit
+## FilaStarter Kit
 
 A Starter Kit For Filament with most basic necessities pre-configured.
 
-## Packages
+### Packages
 
 [Laravel](https://github.com/laravel/laravel)  
 [Livewire](https://github.com/livewire/livewire)  
 [Filament](https://github.com/filamentphp/filament)
 
-### Filament Plugins Installed/Pre-configured
+#### Packages Installed/Pre-configured
 
-- Filament Shield
-- Filament Breezy Auth
-- Filament Logger
-- Filament Tall Interactive
+- Filament Packages
+    - Filament Shield by bezhansalleh
+    - Filament Breezy by jeffgreco13
+    - Filament Logger by z3d0x
+    - Filament Components by ralphjsmit
+    - Filament Light Switch by awcodes
+    - Filament Overlook by awcodes
+    - Filament Progressbar by njxqlus
 
-Notes: Sheild configured to create only these permisions
+- Other Packages
+    - Laravel IDE Helper by barryvdh
 
+- Notes: 
+    - Shield configured to create only these permissions
 `'view','view_any','create','update','delete','delete_any',`
 
 ### Installation
 
-Create New Project
+#### Create New Project
 
 ```bash
   composer create-project --prefer-dist raugadh/fila-starter example-app
 ```
 
-Deployment
+#### Deployment
 
-- configure env for database.
+- Configure Project.
+    - Update Composer Packages
+    - Add Database Credentials
+    - Add ASSET_PREFIX if deployed application in sub-folder
+    - Link Storage 
+
+```bash
+php artisan storage:link
+```
+
+- Initialize Project
+    - Runs Following in sequence
+
+        ```
+        migrate:fresh --force
+        shield:generate -all
+        db:seed --force
+        optimize:clear
+
+        ```
 
 ```bash
   php artisan project:init
-
 ```
 
-##### add DEBUGBAR_ENABLED=true to env to enable debugbar
+- Note: 
+    - Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions. 
+        - Runs Following in sequence
 
-### Note: Whenever new Resource or Page is Added Run `project:init` to migrate and create permissions.
+            ```
+            migrate
+            shield:generate -all
+            optimize:clear
 
-command runs following in succession
-
-- Migrate
-- Shield Generate -all
-- Seed database
-- clear cache
-
-must be followed in this sequence to generate roles.
-
-command can also be run through route
-
-```sh
-APP_URL/data
-```
-
-Generate Static Assets
+            ```
 
 ```bash
-php artisan filament:cache-assets
-
+    php artisan project:update
 ```
 
-build vite assets
+- build vite assets
 
 ```bash
 npm install && npm run build
-
 ```
 
-#### Thanks
-```
+### Thanks

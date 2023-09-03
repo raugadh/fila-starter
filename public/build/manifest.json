@@ -1,0 +1,23 @@
+{
+  "_axios-82afda87.js": {
+    "file": "assets/axios-82afda87.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-c7a4e074.css",
+    "isEntry": true,
+    "src": "resources/css/filament/admin/theme.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-8e31f628.js",
+    "imports": [
+      "_axios-82afda87.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

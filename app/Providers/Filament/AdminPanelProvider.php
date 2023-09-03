@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->passwordReset()
             ->colors([
-                'primary' => Color::Sky,
+                'primary' => Color::Blue,
             ])
             ->maxContentWidth('6xl')
             ->topNavigation()
