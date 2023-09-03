@@ -32,8 +32,7 @@ A Starter Kit For Filament with most basic necessities pre-configured.
 ### Installation
 
 #### Create New Project
-
-```bash
+```fish
 composer create-project --prefer-dist raugadh/fila-starter example-app
 ```
 
@@ -44,48 +43,46 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
    - Add Database Credentials
    - Add ASSET_PREFIX if deployed application in sub-folder
    - Link Storage
-
-```bash
-php artisan storage:link
-```
+     
+        ```fish
+        php artisan storage:link
+        ```
 
 - Initialize Project
 
-- Runs Following in sequence
+    - Runs Following in sequence
 
-```sh
-migrate:fresh --force
-shield:generate -all
-db:seed --force
-optimize:clear
+        ```yaml
+        migrate:fresh --force
+        shield:generate -all
+        db:seed --force
+        optimize:clear
+        ```
 
-```
-
-```bash
-  php artisan project:init
-```
+    ```fish
+      php artisan project:init
+    ```
 
 - Update Permissions and Migrations
 
-- Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
+    - Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
 
-- Runs Following in sequence
+    - Runs Following in sequence
 
-```yaml
-migrate
-shield:generate -all
-optimize:clear
+        ```yaml
+        migrate
+        shield:generate -all
+        optimize:clear
+        ```
 
-```
-
-```bash
+    ```fish
     php artisan project:update
-```
+    ```
 
 - build vite assets
 
-```bash
-npm install && npm run build
-```
+    ```fish
+    npm install && npm run build
+    ```
 
 ### Thanks
