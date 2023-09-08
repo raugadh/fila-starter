@@ -43,6 +43,10 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'tmp-for-tests' => [
+            'driver' => 'local',
+            'root' => storage_path('app/livewire-tmp'),
+        ],
 
         's3' => [
             'driver' => 's3',

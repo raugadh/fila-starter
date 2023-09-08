@@ -13,9 +13,11 @@
         "php": "^8.1",
         "awcodes/light-switch": "^1.0",
         "awcodes/overlook": "^2.0",
+        "aymanalhattami/filament-slim-scrollbar": "^2.0",
         "bezhansalleh/filament-shield": "^3.0",
         "filament/filament": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
+        "hasnayeen/themes": "^3.0",
         "jeffgreco13/filament-breezy": "^2.1",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
@@ -26,14 +28,16 @@
         "z3d0x/filament-logger": "^0.6.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.9",
         "barryvdh/laravel-ide-helper": "^2.13",
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.13",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "symfony/filesystem": "^6.3"
     },
     "autoload": {
         "psr-4": {
@@ -51,11 +55,13 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade"
+            "@php artisan filament:upgrade",
+            "@php artisan themes:upgrade",
+            "@php artisan optimize:clear",
+            "./vendor/bin/pint"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan optimize:clear"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

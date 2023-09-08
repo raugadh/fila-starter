@@ -9,7 +9,6 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -29,10 +28,10 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->passwordReset()
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::Amber,
             ])
             ->maxContentWidth('6xl')
-            ->topNavigation()
+            ->sidebarCollapsibleOnDesktop()
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
@@ -53,6 +52,8 @@ class AdminPanelProvider extends PanelProvider
 
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
 
+                \Hasnayeen\Themes\ThemesPlugin::make(),
+
                 \Awcodes\LightSwitch\LightSwitchPlugin::make()
                     ->position(\Awcodes\LightSwitch\Enums\Alignment::BottomCenter)
                     ->enabledOn([
@@ -66,10 +67,10 @@ class AdminPanelProvider extends PanelProvider
                         \Z3d0X\FilamentLogger\Resources\ActivityResource::class,
                     ]),
 
-                \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b')
+                \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
             ])
             ->resources([
-                config('filament-logger.activity_resource')
+                config('filament-logger.activity_resource'),
             ])
             ->navigationGroups([
                 'Administration',
@@ -85,6 +86,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \Hasnayeen\Themes\Http\Middleware\SetTheme::class,
             ])
             ->authMiddleware([
                 Authenticate::class,

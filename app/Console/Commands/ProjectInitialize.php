@@ -26,13 +26,13 @@ class ProjectInitialize extends Command
     public function handle()
     {
         $this->call('migrate:fresh', [
-            '--force' => true
+            '--force' => true,
         ]);
         $this->call('shield:generate', [
-            '--all' => true
+            '--all' => true,
         ]);
         $this->call('db:seed', [
-            '--force' => true
+            '--force' => true,
         ]);
         $this->call('optimize:clear');
     }

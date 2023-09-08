@@ -27,7 +27,7 @@ class ProjectUpdate extends Command
     {
         $this->call('migrate');
         $this->call('shield:generate', [
-            '--all' => true
+            '--all' => true,
         ]);
         $this->call('optimize:clear');
     }
