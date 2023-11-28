@@ -1,6 +1,6 @@
 {
-  "_axios-82afda87.js": {
-    "file": "assets/axios-82afda87.js"
+  "_axios-28bc18a3.js": {
+    "file": "assets/axios-28bc18a3.js"
   },
   "resources/css/app.css": {
     "file": "assets/app-4ed993c7.js",
@@ -8,14 +8,14 @@
     "src": "resources/css/app.css"
   },
   "resources/css/filament/admin/theme.css": {
-    "file": "assets/theme-654529a8.css",
+    "file": "assets/theme-72411e73.css",
     "isEntry": true,
     "src": "resources/css/filament/admin/theme.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-8e31f628.js",
+    "file": "assets/app-3c3d97c0.js",
     "imports": [
-      "_axios-82afda87.js"
+      "_axios-28bc18a3.js"
     ],
     "isEntry": true,
     "src": "resources/js/app.js"
