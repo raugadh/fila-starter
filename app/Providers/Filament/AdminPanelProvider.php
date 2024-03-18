@@ -50,7 +50,18 @@ class AdminPanelProvider extends PanelProvider
                         slug: 'profile'
                     ),
 
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                    ->gridColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 3,
+                    ])
+                    ->sectionColumnSpan(1)
+                    ->checkboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 2,
+                    ]),
 
                 \Hasnayeen\Themes\ThemesPlugin::make(),
 
@@ -60,11 +71,11 @@ class AdminPanelProvider extends PanelProvider
                         'auth.login',
                         'auth.password',
                     ]),
-
+                \Swis\Filament\Backgrounds\FilamentBackgroundsPlugin::make()
+                    ->showAttribution(false),
                 \Awcodes\Overlook\OverlookPlugin::make()
-                    ->excludes([
-                        \BezhanSalleh\FilamentShield\Resources\RoleResource::class,
-                        \Z3d0X\FilamentLogger\Resources\ActivityResource::class,
+                    ->includes([
+                        \App\Filament\Admin\Resources\UserResource::class,
                     ]),
 
                 \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
