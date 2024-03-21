@@ -1,6 +1,7 @@
 ## FilaStarter Kit
 
-A Starter Kit For Filament with most basic necessities pre-configured.
+A Starter Kit For Filament with most basic necessities
+pre-configured based on personal preference/requirements.
 
 ### Packages
 
@@ -10,47 +11,54 @@ A Starter Kit For Filament with most basic necessities pre-configured.
 
 #### Packages Installed/Pre-configured
 
-- Filament Packages
+-   Filament Packages
 
-   - Filament Shield by bezhansalleh
-   - Filament Breezy by jeffgreco13
-   - Filament Logger by z3d0x
-   - Filament Components by ralphjsmit
-   - Filament Light Switch by awcodes
-   - Filament Overlook by awcodes
-   - Filament Progressbar by njxqlus
+    -   bezhansalleh/filament-shield
+    -   jeffgreco13/filament-breezy
+    -   z3d0x/filament-logger
+    -
+    -   awcodes/overlook
+    -   awcodes/light-switch
+    -   hasnayeen/themes (Default set to Sunset)
+    -   joshembling/image-optimizer
+    -   njxqlus/filament-progressbar
+    -   swisnl/filament-backgrounds
+    -   aymanalhattami/filament-slim-scrollbar
 
-- Other Packages
+-   Other Packages
 
-   - Laravel IDE Helper by barryvdh
+    -   barryvdh/laravel-ide-helper
+    -   barryvdh/laravel-debugbar
 
-- Notes:
+-   Notes:
 
-   - Shield configured to create only these permissions
-      `'view','view_any','create','update','delete','delete_any',`
+    -   Shield configured to create only these permissions
+        `'view','view_any','create','update','delete','delete_any',`
 
 ### Installation
 
 #### Create New Project
+
 ```fish
 composer create-project --prefer-dist raugadh/fila-starter example-app
 ```
 
 #### Deployment
 
-- Configure Project.
-   - Update Composer Packages
-   - Add Database Credentials
-   - Add ASSET_PREFIX if deployed application in sub-folder
-   - Link Storage
-     
+-   Configure Project.
+
+    -   Update Composer Packages
+    -   Add Database Credentials
+    -   Add ASSET_PREFIX if deployed application in sub-folder
+    -   Link Storage
+
         ```fish
         php artisan storage:link
         ```
 
-- Initialize Project
+-   Initialize Project
 
-    - Runs Following in sequence
+    -   Runs Following in sequence
 
         ```yaml
         migrate:fresh --force
@@ -59,15 +67,17 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
         optimize:clear
         ```
 
-    ```fish
-      php artisan project:init
-    ```
+    -   or
 
-- Update Permissions and Migrations
+        ```fish
+          php artisan project:init
+        ```
 
-    - Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
+-   Update Permissions and Migrations
 
-    - Runs Following in sequence
+    -   Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
+
+    -   Runs Following in sequence
 
         ```yaml
         migrate
@@ -75,14 +85,22 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
         optimize:clear
         ```
 
-    ```fish
-    php artisan project:update
-    ```
+    -   or
 
-- build vite assets
+        ```fish
+        php artisan project:update
+        ```
+
+-   build vite assets
 
     ```fish
     npm install && npm run build
     ```
 
-### Thanks
+#### Enjoy
+
+    Thanks for using this kit, leave a star if you found this useful.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

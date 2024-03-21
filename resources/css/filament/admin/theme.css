@@ -1,3 +1,10 @@
-@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import "/vendor/filament/filament/resources/css/theme.css";
 
-@config './tailwind.config.js';
+@config 'tailwind.config.js';
+
+[x-cloak] {
+    display: none !important;
+}
+.custom-image .filepond--item {
+    width: calc(33.3% - 0.5em);
+}

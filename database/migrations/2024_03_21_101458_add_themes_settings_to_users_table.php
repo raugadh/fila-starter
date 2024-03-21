@@ -9,7 +9,7 @@ return new class() extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('theme')->nullable()->default('default');
+            $table->string('theme')->nullable()->default('sunset');
             $table->string('theme_color')->nullable();
         });
     }

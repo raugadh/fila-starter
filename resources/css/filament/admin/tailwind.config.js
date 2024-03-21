@@ -19,6 +19,8 @@ module.exports = {
         "./resources/views/filament/**/*.blade.php",
         "./vendor/filament/**/*.blade.php",
         "./vendor/awcodes/overlook/resources/**/*.blade.php",
+        "./vendor/andrewdwallo/filament-selectify/resources/views/**/*.blade.php",
+        "<./vendor/awcodes/filament-tiptap-editor/resources/**/*.blade.php",
     ],
     darkMode: "class",
     presets: [preset],
