@@ -2,9 +2,11 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -25,13 +27,15 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->spa(true)
             ->login()
             ->passwordReset()
+            ->defaultThemeMode(ThemeMode::Light)
             ->colors([
                 'primary' => Color::Amber,
             ])
             ->maxContentWidth('7xl')
-            ->sidebarCollapsibleOnDesktop()
+            ->sidebarCollapsibleOnDesktop(true)
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
@@ -73,6 +77,7 @@ class AdminPanelProvider extends PanelProvider
                     ]),
                 \Swis\Filament\Backgrounds\FilamentBackgroundsPlugin::make()
                     ->showAttribution(false),
+
                 \Awcodes\Overlook\OverlookPlugin::make()
                     ->includes([
                         \App\Filament\Admin\Resources\UserResource::class,
@@ -80,11 +85,14 @@ class AdminPanelProvider extends PanelProvider
 
                 \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
             ])
+            ->navigationGroups([
+
+                NavigationGroup::make()
+                    ->label('Administration')
+                    ->icon('heroicon-o-cog-8-tooth'),
+            ])
             ->resources([
                 config('filament-logger.activity_resource'),
-            ])
-            ->navigationGroups([
-                'Administration',
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->middleware([
@@ -97,6 +105,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+
                 \Hasnayeen\Themes\Http\Middleware\SetTheme::class,
             ])
             ->authMiddleware([

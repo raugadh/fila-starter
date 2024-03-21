@@ -20,6 +20,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationGroup = 'Administration';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     protected static ?int $navigationSort = -2;
 
     public static function getNavigationBadge(): ?string
@@ -35,7 +37,7 @@ class UserResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            'User' => $record->name,
+            'Role' => $record->roles->pluck('name')->implode(', '),
             'Email' => $record->email,
         ];
     }
@@ -90,13 +92,6 @@ class UserResource extends Resource
                     ])
                     ->columns(1),
 
-                Forms\Components\Section::make('Timestamps')
-                    ->schema([
-                        \RalphJSmit\Filament\Components\Forms\CreatedAt::make(),
-                        \RalphJSmit\Filament\Components\Forms\UpdatedAt::make(),
-                    ])
-                    ->hiddenOn(Pages\CreateUser::class)
-                    ->columns(2),
             ]);
     }
 

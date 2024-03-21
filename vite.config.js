@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import viteCompression from "vite-plugin-compression2";
+import compression from "vite-plugin-compression2";
 export default defineConfig({
     plugins: [
         laravel({
@@ -11,25 +11,27 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        viteCompression(),
+        compression({
+            // deleteOriginalAssets: true,
+        }),
     ],
 
-    build: {
-        chunkSizeWarningLimit: 500,
-        cssCodeSplit: true,
-        reportCompressedSize: false,
-        rollupOptions: {
-            output: {
-                manualChunks(id) {
-                    if (id.includes("node_modules")) {
-                        return id
-                            .toString()
-                            .split("node_modules/")[1]
-                            .split("/")[0]
-                            .toString();
-                    }
-                },
-            },
-        },
-    },
+    // build: {
+    //     chunkSizeWarningLimit: 500,
+    //     cssCodeSplit: true,
+    //     reportCompressedSize: false,
+    //     rollupOptions: {
+    //         output: {
+    //             manualChunks(id) {
+    //                 if (id.includes("node_modules")) {
+    //                     return id
+    //                         .toString()
+    //                         .split("node_modules/")[1]
+    //                         .split("/")[0]
+    //                         .toString();
+    //                 }
+    //             },
+    //         },
+    //     },
+    // },
 });
