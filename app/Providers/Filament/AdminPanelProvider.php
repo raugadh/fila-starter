@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Rose,
             ])
             ->maxContentWidth('7xl')
             ->sidebarCollapsibleOnDesktop(true)
