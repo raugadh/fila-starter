@@ -59,13 +59,13 @@ class UserResource extends Resource
                             ->image()
                             ->optimize('webp')
                             ->imageEditor()
-                            ->hint('Size: 120x120')
                             ->imagePreviewHeight('250')
                             ->panelAspectRatio('7:2')
                             ->panelLayout('integrated')
                             ->columnSpan('full'),
                         Forms\Components\TextInput::make('email')
                             ->required()
+                            ->prefixIcon('heroicon-m-envelope')
                             ->columnSpan('full')
                             ->email(),
 
