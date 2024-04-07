@@ -97,6 +97,21 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
     npm install && npm run build
     ```
 
+-   Generate IDE:Helper files
+
+    ```yaml
+    ide-helper:generate
+    ide-helper:models --nowrite
+    ide-helper:meta
+    ```
+
+    or
+
+    ```fish
+    php artisan dev:init
+    ``
+    ```
+
 #### Enjoy
 
     Thanks for using this kit, leave a star if you found this useful.
