@@ -10,3 +10,4 @@ jobs:
         with:
           preset: laravel
           verboseMode: true
+          pintVersion: 1.15.1
