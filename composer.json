@@ -56,8 +56,6 @@
             "@php artisan package:discover --ansi",
             "@php artisan filament:upgrade",
             "@php artisan themes:upgrade",
-            "@php artisan dev:init",
-            "@php artisan optimize:clear",
             "./vendor/bin/pint"
         ],
         "post-update-cmd": [
@@ -68,7 +66,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
-            "@php artisan migrate --graceful --ansi"
+            "@php artisan project:init"
         ]
     },
     "extra": {
