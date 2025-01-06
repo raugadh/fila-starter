@@ -11,9 +11,9 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        compression({
-            // deleteOriginalAssets: true,
-        }),
+        // compression({
+        //     // deleteOriginalAssets: true,
+        // }),
     ],
 
     // build: {

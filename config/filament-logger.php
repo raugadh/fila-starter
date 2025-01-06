@@ -12,7 +12,7 @@ return [
         'logger' => \Z3d0X\FilamentLogger\Loggers\ResourceLogger::class,
         'color' => 'success',
         'exclude' => [
-            //App\Filament\Resources\UserResource::class,
+            // App\Filament\Resources\UserResource::class,
         ],
     ],
 
@@ -36,7 +36,7 @@ return [
         'color' => 'warning',
         'logger' => \Z3d0X\FilamentLogger\Loggers\ModelLogger::class,
         'register' => [
-            //App\Models\User::class,
+            // App\Models\User::class,
         ],
     ],
 
