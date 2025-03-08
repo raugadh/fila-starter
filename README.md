@@ -15,19 +15,21 @@ pre-configured based on personal preference/requirements.
 
     -   bezhansalleh/filament-shield
     -   z3d0x/filament-logger
-    -
+    -   joaopaulolndev/filament-edit-profile
     -   awcodes/overlook
     -   awcodes/light-switch
     -   hasnayeen/themes (Default set to Sunset)
     -   joshembling/image-optimizer
     -   njxqlus/filament-progressbar
-    -   swisnl/filament-backgrounds
+    -   ogogpinto/filament-auth-ui-enhancer
     -   aymanalhattami/filament-slim-scrollbar
 
 -   Other Packages
 
     -   barryvdh/laravel-ide-helper
     -   barryvdh/laravel-debugbar
+    -   tightenco/duster
+    -   symfony/filesystem `for relative storage:link`
 
 -   Notes:
 
@@ -61,7 +63,7 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
 
         ```yaml
         migrate:fresh --force
-        shield:generate -all
+        shield:generate -all -panel=admin
         db:seed --force
         optimize:clear
         ```
@@ -80,7 +82,7 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
 
         ```yaml
         migrate
-        shield:generate -all
+        shield:generate -all -panel=admin
         optimize:clear
         ```
 
@@ -100,7 +102,7 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
 
     ```yaml
     ide-helper:generate
-    ide-helper:models --nowrite
+    ide-helper:models --nowrite --write-eloquent-helper --reset
     ide-helper:meta
     ```
 
@@ -108,8 +110,24 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
 
     ```fish
     php artisan dev:init
-    ``
     ```
+
+-   Clear/Generate Cache
+
+    ```yaml
+    filament:optimize-clear
+    optimize:clear
+    optimize
+    filament:optimize
+    ```
+
+    or
+
+    ```fish
+    php artisan project:cache
+    ```
+
+##### Make sure to check check custom console commands yourselves and change them based on your requirements.
 
 #### Enjoy
 
