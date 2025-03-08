@@ -50,11 +50,11 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     public function getFilamentAvatarUrl(): ?string
     {
         if ($this->avatar_url) {
-            return asset('storage/'.$this->avatar_url);
+            return asset('storage/' . $this->avatar_url);
         } else {
             $hash = md5(strtolower(trim($this->email)));
 
-            return 'https://www.gravatar.com/avatar/'.$hash.'?d=mp&r=g&s=250';
+            return 'https://www.gravatar.com/avatar/' . $hash . '?d=mp&r=g&s=250';
         }
     }
 

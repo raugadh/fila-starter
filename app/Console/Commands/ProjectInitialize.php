@@ -30,11 +30,13 @@ class ProjectInitialize extends Command
         ]);
         $this->call('shield:generate', [
             '--all' => true,
+            '--panel' => 'admin',
         ]);
         $this->call('db:seed', [
             '--force' => true,
         ]);
 
+        $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
     }
 }

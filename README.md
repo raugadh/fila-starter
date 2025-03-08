@@ -14,7 +14,6 @@ pre-configured based on personal preference/requirements.
 -   Filament Packages
 
     -   bezhansalleh/filament-shield
-    -   jeffgreco13/filament-breezy
     -   z3d0x/filament-logger
     -
     -   awcodes/overlook
