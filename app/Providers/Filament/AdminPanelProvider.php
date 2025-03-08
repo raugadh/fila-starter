@@ -6,11 +6,13 @@ use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -18,6 +20,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,17 +30,20 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->spa(true)
+            ->spa()
             ->login()
             ->passwordReset()
+            // ->profile(\App\Filament\Pages\Auth\EditProfile::class, isSimple: false)
             ->defaultThemeMode(ThemeMode::Light)
+            ->font('Montserrat')
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->maxContentWidth('7xl')
+            ->maxContentWidth(MaxWidth::SevenExtraLarge)
             ->sidebarCollapsibleOnDesktop(true)
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
+            ->discoverClusters(in: app_path('Filament/Admin/Clusters'), for: 'App\\Filament\\Admin\\Clusters')
             ->pages([
                 Pages\Dashboard::class,
             ])
@@ -45,15 +51,21 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 \Awcodes\Overlook\Widgets\OverlookWidget::class,
             ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Administration')
+                    ->icon('heroicon-o-cog-8-tooth'),
+            ])
+            ->userMenuItems([
+                'profile' => MenuItem::make()
+                    ->label(fn () => auth()->user()->name)
+                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->icon('heroicon-m-user-circle'),
+                // 'profile' => \Filament\Navigation\MenuItem::make()
+                //     ->label(fn () => auth()->user()->name)
+                //     ->icon('heroicon-m-user-circle'),
+            ])
             ->plugins([
-                \Jeffgreco13\FilamentBreezy\BreezyCore::make()
-                    ->myProfile(
-                        shouldRegisterUserMenu: true,
-                        shouldRegisterNavigation: false,
-                        hasAvatars: true,
-                        slug: 'profile'
-                    ),
-
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
                     ->gridColumns([
                         'default' => 1,
@@ -66,30 +78,32 @@ class AdminPanelProvider extends PanelProvider
                         'sm' => 2,
                         'lg' => 2,
                     ]),
-
                 \Hasnayeen\Themes\ThemesPlugin::make(),
-
+                \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
+                \DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin::make()
+                    ->showEmptyPanelOnMobile(false)
+                    ->formPanelPosition('right')
+                    ->formPanelWidth('40%')
+                    ->emptyPanelBackgroundImageOpacity('70%')
+                    ->emptyPanelBackgroundImageUrl('https://picsum.photos/seed/picsum/1260/750.webp/?blur=1'),
                 \Awcodes\LightSwitch\LightSwitchPlugin::make()
                     ->position(\Awcodes\LightSwitch\Enums\Alignment::BottomCenter)
                     ->enabledOn([
                         'auth.login',
                         'auth.password',
                     ]),
-                \Swis\Filament\Backgrounds\FilamentBackgroundsPlugin::make()
-                    ->showAttribution(false),
-
                 \Awcodes\Overlook\OverlookPlugin::make()
                     ->includes([
                         \App\Filament\Admin\Resources\UserResource::class,
                     ]),
-
-                \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
-            ])
-            ->navigationGroups([
-
-                NavigationGroup::make()
-                    ->label('Administration')
-                    ->icon('heroicon-o-cog-8-tooth'),
+                \Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin::make()
+                    ->slug('my-profile')
+                    ->setTitle('My Profile')
+                    ->shouldRegisterNavigation(false)
+                    ->shouldShowDeleteAccountForm(false)
+                    ->shouldShowSanctumTokens(false)
+                    ->shouldShowBrowserSessionsForm()
+                    ->shouldShowAvatarForm(),
             ])
             ->resources([
                 config('filament-logger.activity_resource'),

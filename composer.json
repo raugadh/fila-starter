@@ -15,19 +15,19 @@
         "awcodes/overlook": "^2.2",
         "aymanalhattami/filament-slim-scrollbar": "^2.0",
         "bezhansalleh/filament-shield": "^3.2",
+        "diogogpinto/filament-auth-ui-enhancer": "^1.0",
         "filament/filament": "^3.2",
         "hasnayeen/themes": "^3.0",
-        "jeffgreco13/filament-breezy": "^2.3",
-        "joshembling/image-optimizer": "^1.4",
+        "joaopaulolndev/filament-edit-profile": "^1.0",
+        "joshembling/image-optimizer": "^1.0",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
         "njxqlus/filament-progressbar": "^1.0",
-        "swisnl/filament-backgrounds": "^1.1",
-        "z3d0x/filament-logger": "^0.7.0"
+        "z3d0x/filament-logger": "^0.8.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.12",
+        "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
@@ -36,7 +36,9 @@
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.3",
-        "spatie/laravel-ignition": "^2.4"
+        "spatie/laravel-ignition": "^2.4",
+        "symfony/filesystem": "^7.2",
+        "tightenco/duster": "^3.1"
     },
     "autoload": {
         "psr-4": {

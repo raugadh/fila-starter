@@ -4,33 +4,30 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class ProjectUpdate extends Command
+class Recache extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'project:update';
+    protected $signature = 'project:cache';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Project Update';
+    protected $description = 'Project Cache Refresh';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $this->call('migrate');
-        $this->call('shield:generate', [
-            '--all' => true,
-            '--panel' => 'admin',
-        ]);
         $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
+        $this->call('optimize');
+        $this->call('filament:optimize');
     }
 }

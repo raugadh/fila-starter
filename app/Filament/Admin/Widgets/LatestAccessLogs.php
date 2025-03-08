@@ -11,9 +11,36 @@ use Spatie\Activitylog\Models\Activity;
 
 class LatestAccessLogs extends BaseWidget
 {
+    protected static ?int $sort = 100;
+
     protected int|string|array $columnSpan = 2;
 
-    protected static ?int $sort = 100;
+    protected static function getLogNameColors(): array
+    {
+        $customs = [];
+
+        foreach (config('filament-logger.custom') ?? [] as $custom) {
+            if (filled($custom['color'] ?? null)) {
+                $customs[$custom['color']] = $custom['log_name'];
+            }
+        }
+
+        return array_merge(
+            (config('filament-logger.resources.enabled') && config('filament-logger.resources.color')) ? [
+                config('filament-logger.resources.color') => config('filament-logger.resources.log_name'),
+            ] : [],
+            (config('filament-logger.models.enabled') && config('filament-logger.models.color')) ? [
+                config('filament-logger.models.color') => config('filament-logger.models.log_name'),
+            ] : [],
+            (config('filament-logger.access.enabled') && config('filament-logger.access.color')) ? [
+                config('filament-logger.access.color') => config('filament-logger.access.log_name'),
+            ] : [],
+            (config('filament-logger.notifications.enabled') && config('filament-logger.notifications.color')) ? [
+                config('filament-logger.notifications.color') => config('filament-logger.notifications.log_name'),
+            ] : [],
+            $customs,
+        );
+    }
 
     public function table(Table $table): Table
     {
@@ -46,7 +73,7 @@ class LatestAccessLogs extends BaseWidget
                             return '-';
                         }
 
-                        return Str::of($state)->afterLast('\\')->headline().' # '.$record->subject_id;
+                        return Str::of($state)->afterLast('\\')->headline() . ' # ' . $record->subject_id;
                     }),
 
                 Tables\Columns\TextColumn::make('causer.name')
@@ -58,32 +85,5 @@ class LatestAccessLogs extends BaseWidget
                     ->sortable(),
             ])
             ->paginated(false);
-    }
-
-    protected static function getLogNameColors(): array
-    {
-        $customs = [];
-
-        foreach (config('filament-logger.custom') ?? [] as $custom) {
-            if (filled($custom['color'] ?? null)) {
-                $customs[$custom['color']] = $custom['log_name'];
-            }
-        }
-
-        return array_merge(
-            (config('filament-logger.resources.enabled') && config('filament-logger.resources.color')) ? [
-                config('filament-logger.resources.color') => config('filament-logger.resources.log_name'),
-            ] : [],
-            (config('filament-logger.models.enabled') && config('filament-logger.models.color')) ? [
-                config('filament-logger.models.color') => config('filament-logger.models.log_name'),
-            ] : [],
-            (config('filament-logger.access.enabled') && config('filament-logger.access.color')) ? [
-                config('filament-logger.access.color') => config('filament-logger.access.log_name'),
-            ] : [],
-            (config('filament-logger.notifications.enabled') && config('filament-logger.notifications.color')) ? [
-                config('filament-logger.notifications.color') => config('filament-logger.notifications.log_name'),
-            ] : [],
-            $customs,
-        );
     }
 }

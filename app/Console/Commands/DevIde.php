@@ -28,6 +28,8 @@ class DevIde extends Command
         $this->call('ide-helper:generate');
         $this->call('ide-helper:models', [
             '--nowrite' => true,
+            '--write-eloquent-helper' => true,
+            '--reset' => true,
         ]);
         $this->call('ide-helper:meta');
 
