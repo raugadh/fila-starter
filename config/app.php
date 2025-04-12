@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'asset_prefix' => env('ASSET_PREFIX', ''),
 ];

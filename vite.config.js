@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import compression from "vite-plugin-compression2";
 export default defineConfig({
     plugins: [
         laravel({
@@ -11,9 +10,6 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        // compression({
-        //     // deleteOriginalAssets: true,
-        // }),
     ],
 
     // build: {

@@ -1,44 +1,38 @@
 {
-    "name": "raugadh/fila-starter",
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/laravel",
     "type": "project",
-    "description": "Laravel Filament Starter.",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
-    "keywords": [
-        "framework",
-        "laravel",
-        "filament",
-        "starter kit"
-    ],
     "require": {
         "php": "^8.2",
-        "awcodes/light-switch": "^1.0",
-        "awcodes/overlook": "^2.2",
-        "aymanalhattami/filament-slim-scrollbar": "^2.0",
-        "bezhansalleh/filament-shield": "^3.2",
-        "diogogpinto/filament-auth-ui-enhancer": "^1.0",
-        "filament/filament": "^3.2",
-        "hasnayeen/themes": "^3.0",
+        "awcodes/light-switch": "*",
+        "awcodes/overlook": "*",
+        "aymanalhattami/filament-slim-scrollbar": "*",
+        "bezhansalleh/filament-shield": "*",
+        "diogogpinto/filament-auth-ui-enhancer": "*",
+        "filament/filament": "^3.3",
+        "hasnayeen/themes": "*",
         "joaopaulolndev/filament-edit-profile": "^1.0",
-        "joshembling/image-optimizer": "^1.0",
-        "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.0",
-        "njxqlus/filament-progressbar": "^1.0",
+        "joshembling/image-optimizer": "^1.6",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1",
+        "njxqlus/filament-progressbar": "*",
         "z3d0x/filament-logger": "^0.8.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.0",
-        "barryvdh/laravel-ide-helper": "^3.0",
+        "barryvdh/laravel-debugbar": "^3.15",
+        "barryvdh/laravel-ide-helper": "^3.5",
         "fakerphp/faker": "^1.23",
+        "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
+        "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-laravel": "^2.3",
-        "spatie/laravel-ignition": "^2.4",
-        "symfony/filesystem": "^7.2",
-        "tightenco/duster": "^3.1"
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.8",
+        "pestphp/pest-plugin-laravel": "^3.1",
+        "symfony/filesystem": "^7.2"
     },
     "autoload": {
         "psr-4": {
@@ -56,9 +50,7 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade",
-            "@php artisan themes:upgrade",
-            "./vendor/bin/pint"
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -67,7 +59,13 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ]
     },
     "extra": {
