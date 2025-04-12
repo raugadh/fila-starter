@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Widgets;
 
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -11,6 +12,7 @@ use Spatie\Activitylog\Models\Activity;
 
 class LatestAccessLogs extends BaseWidget
 {
+    use HasWidgetShield;
     protected static ?int $sort = 100;
 
     protected int|string|array $columnSpan = 2;
@@ -61,8 +63,6 @@ class LatestAccessLogs extends BaseWidget
 
                 Tables\Columns\TextColumn::make('description')
                     ->label(__('filament-logger::filament-logger.resource.label.description'))
-                    ->toggleable()
-                    ->toggledHiddenByDefault()
                     ->wrap(),
 
                 Tables\Columns\TextColumn::make('subject_type')

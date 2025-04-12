@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
+use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
@@ -17,7 +18,6 @@ use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
@@ -33,28 +33,27 @@ class AdminPanelProvider extends PanelProvider
             ->spa()
             ->login()
             ->passwordReset()
-            // ->profile(\App\Filament\Pages\Auth\EditProfile::class, isSimple: false)
+            ->profile(\App\Filament\Pages\Auth\EditProfile::class, isSimple: false)
             ->defaultThemeMode(ThemeMode::Light)
             ->font('Montserrat')
             ->colors([
                 'primary' => Color::Blue,
             ])
             ->maxContentWidth(MaxWidth::SevenExtraLarge)
-            ->sidebarCollapsibleOnDesktop(true)
+            ->sidebarCollapsibleOnDesktop()
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
-            ->discoverClusters(in: app_path('Filament/Admin/Clusters'), for: 'App\\Filament\\Admin\\Clusters')
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->discoverClusters(in: app_path('Filament/Admin/Clusters'), for: 'App\\Filament\\Admin\\Clusters')
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 \Awcodes\Overlook\Widgets\OverlookWidget::class,
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label('Administration')
-                    ->icon('heroicon-o-cog-8-tooth'),
+                    ->label('Administration'),
             ])
             ->userMenuItems([
                 'profile' => MenuItem::make()
@@ -68,15 +67,17 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
                     ->gridColumns([
-                        'default' => 1,
-                        'sm' => 2,
+                        'default' => 2,
                         'lg' => 3,
                     ])
                     ->sectionColumnSpan(1)
                     ->checkboxListColumns([
-                        'default' => 1,
-                        'sm' => 2,
-                        'lg' => 2,
+                        'default' => 2,
+                        'lg' => 3,
+                    ])
+                    ->resourceCheckboxListColumns([
+                        'default' => 2,
+                        'lg' => 3,
                     ]),
                 \Hasnayeen\Themes\ThemesPlugin::make(),
                 \Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin::make()->color('#29b'),
@@ -119,7 +120,6 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-
                 \Hasnayeen\Themes\Http\Middleware\SetTheme::class,
             ])
             ->authMiddleware([
