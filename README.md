@@ -52,20 +52,6 @@ Preview DashBoard:
 
 #### Create New Project
 
-You need the Laravel Installer if it is not yet installed.
-
-```fish
-composer global require laravel/installer
-```
-
-Now you can create a new project using FilaStarter Kit.
-
-```fish
-laravel new example-app --using=raugadh/fila-starter
-```
-
-- OR
-
 ```fish
 composer create-project --prefer-dist raugadh/fila-starter example-app
 ```
