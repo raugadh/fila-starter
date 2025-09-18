@@ -6,13 +6,13 @@ pre-configured based on personal preferences/requirements.
 Preview Login:
 
 | Dark                                   | Light                                   |
-| -------------------------------------- | --------------------------------------- |
+|----------------------------------------|-----------------------------------------|
 | ![](./.github/preview-login-dark.webp) | ![](./.github/preview-login-light.webp) |
 
 Preview DashBoard:
 
 | Dark                                       | Light                                       |
-| ------------------------------------------ | ------------------------------------------- |
+|--------------------------------------------|---------------------------------------------|
 | ![](./.github/preview-dashboard-dark.webp) | ![](./.github/preview-dashboard-light.webp) |
 
 ### Packages
@@ -44,9 +44,9 @@ Preview DashBoard:
 ## Compatibility
 
 | Starter Kit | Filament Version |
-| ----------- | ---------------- |
-| **1.x**     | **_3.x_**        |
-| **2.x**     | **4.x**          |
+|-------------|------------------|
+| **2.x**     | **_3.x_**        |
+| **3.x**     | **4.x**          |
 
 ### Installation
 
@@ -58,7 +58,7 @@ You need the Laravel Installer if it is not yet installed.
 composer global require laravel/installer
 ```
 
-Now you can create a new project using the Laravel Filament Starter Kit.
+Now you can create a new project using FilaStarter Kit.
 
 ```fish
 laravel new example-app --using=raugadh/fila-starter
