@@ -41,7 +41,7 @@ Preview DashBoard:
     - barryvdh/laravel-debugbar
     - laravel/boost
 
-## Compatibility
+### Compatibility
 
 | Starter Kit | Filament Version |
 |-------------|------------------|
