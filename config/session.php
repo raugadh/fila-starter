@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 return [
@@ -13,8 +15,8 @@ return [
     | incoming requests. Laravel supports a variety of storage options to
     | persist session data. Database storage is a great default choice.
     |
-    | Supported: "file", "cookie", "database", "apc",
-    |            "memcached", "redis", "dynamodb", "array"
+    | Supported: "file", "cookie", "database", "memcached",
+    |            "redis", "dynamodb", "array"
     |
     */
 
@@ -97,7 +99,7 @@ return [
     | define the cache store which should be used to store the session data
     | between requests. This must match one of your defined cache stores.
     |
-    | Affects: "apc", "dynamodb", "memcached", "redis"
+    | Affects: "dynamodb", "memcached", "redis"
     |
     */
 
@@ -129,7 +131,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
+        Str::slug(env('APP_NAME', 'laravel')).'-session'
     ),
 
     /*

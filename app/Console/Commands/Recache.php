@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class Recache extends Command
+final class Recache extends Command
 {
     /**
      * The name and signature of the console command.
@@ -23,7 +25,7 @@ class Recache extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
