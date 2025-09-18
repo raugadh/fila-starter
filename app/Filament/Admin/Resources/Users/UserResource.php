@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources\Users;
 
 use App\Filament\Admin\Resources\Users\Pages\CreateUser;
@@ -11,19 +13,19 @@ use App\Filament\Admin\Resources\Users\Schemas\UserInfolist;
 use App\Filament\Admin\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use ToneGabes\Filament\Icons\Enums\Phosphor;
+use UnitEnum;
 
-class UserResource extends Resource
+final class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static string|BackedEnum|null $navigationIcon = Phosphor::UsersDuotone;
 
-    protected static string|null|\UnitEnum $navigationGroup = 'Administration';
+    protected static string|null|UnitEnum $navigationGroup = 'Administration';
 
     protected static ?int $navigationSort = 1;
 

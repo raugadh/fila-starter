@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources\Users\Schemas;
 
-use Filament\Forms\Components\DateTimePicker;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
-use ToneGabes\Filament\Icons\Enums\Phosphor;
 
-class UserForm
+final class UserForm
 {
     public static function configure(Schema $schema): Schema
     {

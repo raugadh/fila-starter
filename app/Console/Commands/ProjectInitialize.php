@@ -33,9 +33,14 @@ final class ProjectInitialize extends Command
         $this->call('shield:generate', [
             '--all' => true,
             '--panel' => 'admin',
+            '--option' => 'policies_and_permissions',
         ]);
         $this->call('db:seed', [
             '--force' => true,
+        ]);
+        $this->call('shield:super-admin', [
+            '--user' => '1',
+            '--panel' => 'admin',
         ]);
 
         $this->call('filament:optimize-clear');

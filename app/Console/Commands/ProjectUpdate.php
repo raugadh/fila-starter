@@ -31,6 +31,8 @@ final class ProjectUpdate extends Command
         $this->call('shield:generate', [
             '--all' => true,
             '--panel' => 'admin',
+            '--option' => 'policies_and_permissions',
+            '--ignore-existing-policies' => true,
         ]);
         $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
