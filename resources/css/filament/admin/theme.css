@@ -1,8 +1,12 @@
-@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../../../../vendor/filafly/brisk/resources/css/theme.css';
 
 @source '../../../../app/Filament/Admin/**/*';
 @source '../../../../resources/views/filament/admin/**/*';
 @source '../../../../vendor/gboquizosanchez/filament-log-viewer/resources/views/**/*.blade.php';
+@source '../../../../vendor/jeffgreco13/filament-breezy/resources/**/*';
+@source '../../../../vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php';
+@source '../../../../vendor/awcodes/light-switch/resources/**/*.blade.php';
+@source '../../../../vendor/awcodes/overlook/resources/**/*.blade.php';
 
 [x-cloak] {
     display: none !important;

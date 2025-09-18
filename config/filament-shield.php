@@ -190,7 +190,7 @@ return [
         'prefix' => 'view',
         'exclude' => [
             Filament\Pages\Dashboard::class,
-            \App\Filament\Admin\Pages\Dashboard::class,
+            App\Filament\Admin\Pages\Dashboard::class,
             Boquizo\FilamentLogViewer\Pages\ViewLog::class,
         ],
     ],

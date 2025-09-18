@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Resources\Users\UserResource;
+use App\Filament\Admin\Widgets\LatestAccessLogs;
+use App\Models\User;
+use Awcodes\LightSwitch\Enums\Alignment;
+use Awcodes\LightSwitch\LightSwitchPlugin;
+use Awcodes\Overlook\OverlookPlugin;
+use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
+use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Themes\Brisk\BriskTheme;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -24,6 +33,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 final class AdminPanelProvider extends PanelProvider
 {
@@ -33,9 +43,9 @@ final class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->authGuard('web')
             ->login()
             ->defaultThemeMode(ThemeMode::Light)
-            ->font('Montserrat')
             ->colors([
                 'primary' => Color::Blue,
             ])
@@ -48,7 +58,8 @@ final class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
-                //
+                OverlookWidget::class,
+                LatestAccessLogs::class,
             ])
             ->navigationGroups([
                 NavigationGroup::make()
@@ -59,7 +70,37 @@ final class AdminPanelProvider extends PanelProvider
                     ->label('Administration'),
             ])
             ->plugins([
+                BriskTheme::make(),
                 PhosphorIcons::make()->duotone(),
+                LightSwitchPlugin::make()
+                    ->position(Alignment::BottomCenter)
+                    ->enabledOn([
+                        'auth.login',
+                    ]),
+                AuthUIEnhancerPlugin::make()
+                    ->showEmptyPanelOnMobile(false)
+                    ->formPanelPosition('right')
+                    ->formPanelWidth('40%')
+                    ->emptyPanelBackgroundImageOpacity('70%')
+                    ->emptyPanelBackgroundImageUrl('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                BreezyCore::make()
+                    ->myProfile(
+                        hasAvatars: true,
+                        slug: 'profile',
+                        userMenuLabel: 'Profile',
+                    )
+                    ->enableBrowserSessions(),
+                OverlookPlugin::make()
+                    ->sort(2)
+                    ->columns([
+                        'default' => 4,
+                        'sm' => 2,
+                        'lg' => 4,
+                        'xl' => 6,
+                    ])
+                    ->includes([
+                        UserResource::class,
+                    ]),
                 FilamentShieldPlugin::make()
                     ->gridColumns([
                         'default' => 2,
@@ -82,10 +123,10 @@ final class AdminPanelProvider extends PanelProvider
                 FilamentDeveloperLoginsPlugin::make()
                     ->enabled(app()->environment('local'))
                     ->switchable(true)
-                    ->users(fn () => User::pluck('email', 'name')->toArray())
+                    ->users(fn () => User::pluck('email', 'name')->toArray()),
             ])
             ->resources([
-                config('filament-logger.activity_resource')
+                config('filament-logger.activity_resource'),
             ])
             ->middleware([
                 EncryptCookies::class,

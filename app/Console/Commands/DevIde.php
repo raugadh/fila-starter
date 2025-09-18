@@ -34,6 +34,5 @@ final class DevIde extends Command
             '--reset' => true,
         ]);
         $this->call('ide-helper:meta');
-
     }
 }

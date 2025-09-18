@@ -1,0 +1,1 @@
+document.addEventListener("livewire:init",()=>{let e=!1;Livewire.hook("request",({fail:i})=>{i(({status:r,preventDefault:n})=>{r===419&&(n(),!e&&(e=!0,Livewire.dispatch("open-modal",{id:"session-expired"})))})})});

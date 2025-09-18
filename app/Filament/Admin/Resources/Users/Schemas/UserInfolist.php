@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources\Users\Schemas;
 
+use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
-use Filafly\Icons\Phosphor\Enums\Phosphor;
 
 final class UserInfolist
 {
@@ -38,21 +38,19 @@ final class UserInfolist
                             ->label('Email address')
                             ->icon(Phosphor::EnvelopeDuotone)
                             ->columnSpanFull(),
-                        TextEntry::make('email_verified_at')
-                            ->dateTime()
-                            ->placeholder('-')
-                            ->icon(Phosphor::CalendarBlankDuotone)
-                            ->columnSpan('1'),
-                        TextEntry::make('created_at')
-                            ->dateTime()
-                            ->placeholder('-')
-                            ->icon(Phosphor::CalendarBlankDuotone)
-                            ->columnSpan(1),
-                        TextEntry::make('updated_at')
-                            ->dateTime()
-                            ->placeholder('-')
-                            ->icon(Phosphor::CalendarBlankDuotone)
-                            ->columnSpan(1),
+                        Grid::make(2)
+                            ->schema([
+                                TextEntry::make('created_at')
+                                    ->dateTime()
+                                    ->placeholder('-')
+                                    ->icon(Phosphor::CalendarBlankDuotone)
+                                    ->columnSpan(1),
+                                TextEntry::make('updated_at')
+                                    ->dateTime()
+                                    ->placeholder('-')
+                                    ->icon(Phosphor::CalendarBlankDuotone)
+                                    ->columnSpan(1),
+                            ])->columnSpanFull(),
                     ])->columnSpan('5'),
             ])->columns(6);
     }
