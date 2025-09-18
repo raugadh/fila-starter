@@ -1,138 +1,61 @@
-## FilaStarter Kit
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-A Starter Kit For Filament with most basic necessities
-pre-configured based on personal preference/requirements.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-### Packages
+## About Laravel
 
-[Laravel](https://github.com/laravel/laravel)  
-[Livewire](https://github.com/livewire/livewire)  
-[Filament](https://github.com/filamentphp/filament)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-#### Packages Installed/Pre-configured
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
--   Filament Packages
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-    -   bezhansalleh/filament-shield
-    -   z3d0x/filament-logger
-    -   joaopaulolndev/filament-edit-profile
-    -   awcodes/overlook
-    -   awcodes/light-switch
-    -   hasnayeen/themes (Default set to Sunset)
-    -   joshembling/image-optimizer
-    -   njxqlus/filament-progressbar
-    -   ogogpinto/filament-auth-ui-enhancer
-    -   aymanalhattami/filament-slim-scrollbar
+## Learning Laravel
 
--   Other Packages
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-    -   barryvdh/laravel-ide-helper
-    -   barryvdh/laravel-debugbar
-    -   tightenco/duster
-    -   symfony/filesystem `for relative storage:link`
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
--   Notes:
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-    -   Shield configured to create only these permissions
-        `'view','view_any','create','update','delete','delete_any',`
+## Laravel Sponsors
 
-### Installation
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-#### Create New Project
+### Premium Partners
 
-```fish
-composer create-project --prefer-dist raugadh/fila-starter example-app
-```
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-#### Deployment
+## Contributing
 
--   Configure Project.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-    -   Update Composer Packages
-    -   Add Database Credentials
-    -   Add ASSET_PREFIX if deployed application in sub-folder
-    -   Link Storage
+## Code of Conduct
 
-        ```fish
-        php artisan storage:link
-        ```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
--   Initialize Project
+## Security Vulnerabilities
 
-    -   Runs Following in sequence
-
-        ```yaml
-        migrate:fresh --force
-        shield:generate -all -panel=admin
-        db:seed --force
-        optimize:clear
-        ```
-
-    -   or
-
-        ```fish
-          php artisan project:init
-        ```
-
--   Update Permissions and Migrations
-
-    -   Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
-
-    -   Runs Following in sequence
-
-        ```yaml
-        migrate
-        shield:generate -all -panel=admin
-        optimize:clear
-        ```
-
-    -   or
-
-        ```fish
-        php artisan project:update
-        ```
-
--   build vite assets
-
-    ```fish
-    npm install && npm run build
-    ```
-
--   Generate IDE:Helper files
-
-    ```yaml
-    ide-helper:generate
-    ide-helper:models --nowrite --write-eloquent-helper --reset
-    ide-helper:meta
-    ```
-
-    or
-
-    ```fish
-    php artisan dev:init
-    ```
-
--   Clear/Generate Cache
-
-    ```yaml
-    filament:optimize-clear
-    optimize:clear
-    optimize
-    filament:optimize
-    ```
-
-    or
-
-    ```fish
-    php artisan project:cache
-    ```
-
-##### Make sure to check check custom console commands yourselves and change them based on your requirements.
-
-#### Enjoy
-
-    Thanks for using this kit, leave a star if you found this useful.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
