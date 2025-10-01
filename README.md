@@ -6,14 +6,16 @@ pre-configured based on personal preferences/requirements.
 Preview Login:
 
 | Dark                                   | Light                                   |
-| -------------------------------------- | --------------------------------------- |
-| ![](./.github/preview-login-dark.webp) | ![](./.github/preview-login-light.webp) |
+|----------------------------------------|-----------------------------------------|
+| ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-dark.webp) | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-light.webp) 
+
 
 Preview DashBoard:
 
 | Dark                                       | Light                                       |
-| ------------------------------------------ | ------------------------------------------- |
-| ![](./.github/preview-dashboard-dark.webp) | ![](./.github/preview-dashboard-light.webp) |
+|--------------------------------------------|---------------------------------------------|
+| ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-dashboard-dark.webp) | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-dashboard-light.webp) |
+
 
 ### Packages
 
@@ -41,7 +43,7 @@ Preview DashBoard:
     - barryvdh/laravel-debugbar
     - laravel/boost
 
-## Compatibility
+### Compatibility
 
 | Starter Kit | Filament Version |
 | ----------- | ---------------- |
