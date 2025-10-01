@@ -6,13 +6,13 @@ pre-configured based on personal preferences/requirements.
 Preview Login:
 
 | Dark                                   | Light                                   |
-|----------------------------------------|-----------------------------------------|
+| -------------------------------------- | --------------------------------------- |
 | ![](./.github/preview-login-dark.webp) | ![](./.github/preview-login-light.webp) |
 
 Preview DashBoard:
 
 | Dark                                       | Light                                       |
-|--------------------------------------------|---------------------------------------------|
+| ------------------------------------------ | ------------------------------------------- |
 | ![](./.github/preview-dashboard-dark.webp) | ![](./.github/preview-dashboard-light.webp) |
 
 ### Packages
@@ -44,7 +44,7 @@ Preview DashBoard:
 ## Compatibility
 
 | Starter Kit | Filament Version |
-|-------------|------------------|
+| ----------- | ---------------- |
 | **2.x**     | **_3.x_**        |
 | **3.x**     | **4.x**          |
 
