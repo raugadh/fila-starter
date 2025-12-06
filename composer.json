@@ -17,7 +17,6 @@
         "bezhansalleh/filament-shield": "^4.0",
         "diogogpinto/filament-auth-ui-enhancer": "^2.0",
         "dutchcodingcompany/filament-developer-logins": "^2.0",
-        "filafly/brisk": "^1.0",
         "filafly/filament-phosphor-icons": "*",
         "filament/filament": "^4.0",
         "gboquizosanchez/filament-log-viewer": "^2.1",
@@ -26,6 +25,7 @@
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.6",
         "marcelweidum/filament-expiration-notice": "^1.0",
+        "osamanagi/filament-abyss-theme": "^1.0",
         "unknow-sk/filament-logger": "^1.0"
     },
     "require-dev": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21a8d8ee6494672bbe0229e87e7ec1bf",
+    "content-hash": "be27b1e237d7b379fcf1dbd9f1cda4dc",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -1625,63 +1625,6 @@
             "time": "2025-03-06T22:45:56+00:00"
         },
         {
-            "name": "filafly/brisk",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/filafly/brisk.git",
-                "reference": "7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/filafly/brisk/zipball/7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448",
-                "reference": "7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448",
-                "shasum": ""
-            },
-            "require": {
-                "filafly/theme-core": "^0.1.0",
-                "filament/filament": "^4.0",
-                "php": "^8.2"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.22",
-                "phpunit/phpunit": "^12.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Filafly\\Themes\\Brisk\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Nolan Nordlund",
-                    "email": "nolan@filafly.com",
-                    "homepage": "https://www.filafly.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple, friendly theme for Filament.",
-            "homepage": "https://filafly.com/themes/brisk",
-            "keywords": [
-                "Simple",
-                "brisk",
-                "filament",
-                "friendly",
-                "laravel",
-                "theme"
-            ],
-            "support": {
-                "issues": "https://github.com/filafly/brisk/issues",
-                "source": "https://github.com/filafly/brisk/tree/v1.0.1"
-            },
-            "time": "2025-08-04T20:59:26+00:00"
-        },
-        {
             "name": "filafly/filament-icons",
             "version": "v2.0.1",
             "source": {
@@ -1796,60 +1739,6 @@
                 "source": "https://github.com/filafly/filament-phosphor-icons/tree/v2.0.1"
             },
             "time": "2025-08-11T19:14:43+00:00"
-        },
-        {
-            "name": "filafly/theme-core",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/filafly/theme-core.git",
-                "reference": "7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/filafly/theme-core/zipball/7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae",
-                "reference": "7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^4.0",
-                "php": "^8.2"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.22"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Filafly\\Themes\\Core\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Nolan Nordlund",
-                    "email": "nolan@filafly.com",
-                    "homepage": "https://www.filafly.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "An extendable theme class accelerating development of Filament themes.",
-            "homepage": "https://filafly.com/",
-            "keywords": [
-                "extendable",
-                "filament",
-                "laravel",
-                "template",
-                "theme"
-            ],
-            "support": {
-                "issues": "https://github.com/filafly/theme-core/issues",
-                "source": "https://github.com/filafly/theme-core/tree/v0.1.0"
-            },
-            "time": "2025-06-30T17:18:49+00:00"
         },
         {
             "name": "filament/actions",
@@ -5312,6 +5201,85 @@
                 }
             ],
             "time": "2025-09-03T16:03:54+00:00"
+        },
+        {
+            "name": "osamanagi/filament-abyss-theme",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/osamanagi/filament-abyss-theme.git",
+                "reference": "2518678abfb28fc638a025172f72fde0ebac18e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/osamanagi/filament-abyss-theme/zipball/2518678abfb28fc638a025172f72fde0ebac18e9",
+                "reference": "2518678abfb28fc638a025172f72fde0ebac18e9",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0.1||^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.10.0||^8.1.1",
+                "orchestra/testbench": "^8.22.0||^9.0.0||^10.0.0",
+                "pestphp/pest": "^2.1||^3.0",
+                "pestphp/pest-plugin-arch": "^2.0||^3.0",
+                "pestphp/pest-plugin-laravel": "^2.0||^3.0",
+                "pestphp/pest-plugin-livewire": "^2.1||^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0||^2.0",
+                "phpstan/phpstan-phpunit": "^1.0||^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nagi\\FilamentAbyssTheme\\FilamentAbyssThemeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nagi\\FilamentAbyssTheme\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Osama Nagi",
+                    "email": "osamanagiworks@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An aesthetic Abyss theme for FilamentPHP",
+            "keywords": [
+                "abyss-theme",
+                "aesthetic",
+                "filament",
+                "filament-theme",
+                "filamentphp",
+                "laravel",
+                "php",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/osamanagi/filament-abyss-theme/issues",
+                "source": "https://github.com/osamanagi/filament-abyss-theme/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/osamanagi",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-09-08T15:27:07+00:00"
         },
         {
             "name": "owenvoke/blade-fontawesome",

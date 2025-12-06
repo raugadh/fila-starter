@@ -17,7 +17,6 @@ use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filafly\Icons\Phosphor\PhosphorIcons;
-use Filafly\Themes\Brisk\BriskTheme;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -34,6 +33,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
 
 final class AdminPanelProvider extends PanelProvider
 {
@@ -70,7 +70,7 @@ final class AdminPanelProvider extends PanelProvider
                     ->label('Administration'),
             ])
             ->plugins([
-                BriskTheme::make(),
+                FilamentAbyssThemePlugin::make(),
                 PhosphorIcons::make()->duotone(),
                 LightSwitchPlugin::make()
                     ->position(Alignment::BottomCenter)
