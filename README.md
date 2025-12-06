@@ -24,17 +24,17 @@ Preview DashBoard:
 #### Packages Installed/Pre-configured
 
 - Filament Packages
-    - awcodes/light-switch
     - awcodes/overlook
     - bezhansalleh/filament-shield
-    - diogogpinto/filament-auth-ui-enhancer
+    - caresome/filament-auth-designer
+    - charrafimed/global-search-modal
     - dutchcodingcompany/filament-developer-logins
-    - filafly/brisk (Theme)
     - filafly/filament-phosphor-icons
     - gboquizosanchez/filament-log-viewer
+    - jacobtims/filament-logger
     - jeffgreco13/filament-breezy
     - marcelweidum/filament-expiration-notice
-    - unknow-sk/filament-logger
+    - osamanagi/filament-abyss-theme (Theme)
 
 - Other Packages
     - barryvdh/laravel-ide-helper

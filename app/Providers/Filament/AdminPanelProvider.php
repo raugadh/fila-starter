@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Pages\Dashboard;
 use App\Filament\Admin\Resources\Users\UserResource;
 use App\Filament\Admin\Widgets\LatestAccessLogs;
 use App\Models\User;
@@ -14,6 +15,7 @@ use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Caresome\FilamentAuthDesigner\AuthDesignerPlugin;
 use Caresome\FilamentAuthDesigner\Enums\AuthLayout;
 use Caresome\FilamentAuthDesigner\Enums\MediaDirection;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filafly\Icons\Phosphor\PhosphorIcons;
@@ -26,12 +28,14 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Width;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
 
@@ -44,13 +48,21 @@ final class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->authGuard('web')
+            ->spa()
+            ->spaUrlExceptions([
+                Dashboard::class,
+            ])
             ->login()
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->maxContentWidth('7xl')
+            ->topbar(false)
             ->sidebarCollapsibleOnDesktop()
+            ->sidebarWidth('16rem')
+            ->maxContentWidth(Width::Full)
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
@@ -85,6 +97,7 @@ final class AdminPanelProvider extends PanelProvider
                         userMenuLabel: 'Profile',
                     )
                     ->enableBrowserSessions(),
+                GlobalSearchModalPlugin::make(),
                 OverlookPlugin::make()
                     ->sort(2)
                     ->columns([
@@ -111,6 +124,7 @@ final class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Administration')
                     ->navigationSort(2)
                     ->navigationIcon(Phosphor::ShieldCheckDuotone),
+                FilamentLoggerPlugin::make(),
                 FilamentLogViewerPlugin::make()
                     ->navigationGroup('Administration')
                     ->navigationSort(4)
@@ -119,9 +133,6 @@ final class AdminPanelProvider extends PanelProvider
                     ->enabled(app()->environment('local'))
                     ->switchable(true)
                     ->users(fn () => User::pluck('email', 'name')->toArray()),
-            ])
-            ->resources([
-                config('filament-logger.activity_resource'),
             ])
             ->middleware([
                 EncryptCookies::class,
