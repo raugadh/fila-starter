@@ -7,13 +7,13 @@ namespace App\Providers\Filament;
 use App\Filament\Admin\Resources\Users\UserResource;
 use App\Filament\Admin\Widgets\LatestAccessLogs;
 use App\Models\User;
-use Awcodes\LightSwitch\Enums\Alignment;
-use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\Overlook\OverlookPlugin;
 use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
-use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
+use Caresome\FilamentAuthDesigner\AuthDesignerPlugin;
+use Caresome\FilamentAuthDesigner\Enums\AuthLayout;
+use Caresome\FilamentAuthDesigner\Enums\MediaDirection;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filafly\Icons\Phosphor\PhosphorIcons;
@@ -72,17 +72,12 @@ final class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentAbyssThemePlugin::make(),
                 PhosphorIcons::make()->duotone(),
-                LightSwitchPlugin::make()
-                    ->position(Alignment::BottomCenter)
-                    ->enabledOn([
-                        'auth.login',
-                    ]),
-                AuthUIEnhancerPlugin::make()
-                    ->showEmptyPanelOnMobile(false)
-                    ->formPanelPosition('right')
-                    ->formPanelWidth('40%')
-                    ->emptyPanelBackgroundImageOpacity('70%')
-                    ->emptyPanelBackgroundImageUrl('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                AuthDesignerPlugin::make()
+                    ->login(
+                        layout: AuthLayout::Panel,
+                        media: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                        direction: MediaDirection::Left,
+                    )->themeToggle(),
                 BreezyCore::make()
                     ->myProfile(
                         hasAvatars: true,
