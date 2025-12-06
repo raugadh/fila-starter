@@ -5,17 +5,15 @@ pre-configured based on personal preferences/requirements.
 
 Preview Login:
 
-| Dark                                   | Light                                   |
-|----------------------------------------|-----------------------------------------|
-| ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-dark.webp) | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-light.webp) 
-
+| Dark                                                                                                          | Light                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-dark.webp) | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-login-light.webp) |
 
 Preview DashBoard:
 
-| Dark                                       | Light                                       |
-|--------------------------------------------|---------------------------------------------|
+| Dark                                                                                                              | Light                                                                                                              |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-dashboard-dark.webp) | ![](https://raw.githubusercontent.com/raugadh/fila-starter/refs/heads/master/.github/preview-dashboard-light.webp) |
-
 
 ### Packages
 
@@ -26,17 +24,17 @@ Preview DashBoard:
 #### Packages Installed/Pre-configured
 
 - Filament Packages
-    - awcodes/light-switch
     - awcodes/overlook
     - bezhansalleh/filament-shield
-    - diogogpinto/filament-auth-ui-enhancer
+    - caresome/filament-auth-designer
+    - charrafimed/global-search-modal
     - dutchcodingcompany/filament-developer-logins
-    - filafly/brisk (Theme)
     - filafly/filament-phosphor-icons
     - gboquizosanchez/filament-log-viewer
+    - jacobtims/filament-logger
     - jeffgreco13/filament-breezy
     - marcelweidum/filament-expiration-notice
-    - unknow-sk/filament-logger
+    - osamanagi/filament-abyss-theme (Theme)
 
 - Other Packages
     - barryvdh/laravel-ide-helper

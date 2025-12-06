@@ -1,0 +1,338 @@
+.fi-simple-header {
+    align-items: start;
+}
+
+.fi-simple-header-heading {
+    text-align: left;
+}
+
+/* AuthDesigner Split-Screen Layout Styles */
+
+.fi-auth-split-screen {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.fi-auth-split-form-side {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.fi-auth-split-form-container {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.fi-auth-split-image-side {
+    position: relative;
+    display: none;
+}
+
+.fi-auth-split-image-wrapper {
+    position: absolute;
+    inset: 0;
+}
+
+.fi-auth-split-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fi-auth-split-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, color-mix(in srgb, var(--gray-900) 50%, transparent), transparent);
+}
+
+@media (min-width: 1024px) {
+    .fi-auth-split-screen.has-media .fi-auth-split-form-side {
+        width: 50%;
+        padding: 3rem;
+    }
+
+    .fi-auth-split-screen.has-media .fi-auth-split-image-side {
+        display: block;
+        width: 50%;
+    }
+
+    .fi-auth-split-screen.has-media.media-left {
+        flex-direction: row-reverse;
+    }
+
+    .fi-auth-split-screen.no-media .fi-auth-split-form-side {
+        width: 100%;
+        padding: 3rem;
+    }
+}
+
+/* AuthDesigner Minimal Layout Styles */
+
+.fi-auth-minimal {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.fi-auth-minimal-container {
+    width: 100%;
+    max-width: 28rem;
+}
+
+/* AuthDesigner FullScreen Layout Styles */
+
+.fi-auth-fullscreen {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.fi-auth-fullscreen-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+.fi-auth-fullscreen-media {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fi-auth-fullscreen-overlay {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--gray-950) 40%, transparent);
+    backdrop-filter: blur(var(--blur-overlay, 0px));
+}
+
+.fi-auth-fullscreen-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 28rem;
+}
+
+.fi-auth-fullscreen-section {
+    backdrop-filter: blur(var(--blur-content, 0px));
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--gray-950) 30%, transparent);
+}
+
+/* AuthDesigner Top Banner Layout Styles */
+
+.fi-auth-top-banner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.fi-auth-top-banner-media {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.fi-auth-top-banner-wrapper {
+    position: absolute;
+    inset: 0;
+}
+
+.fi-auth-top-banner-image,
+.fi-auth-top-banner-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fi-auth-top-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--gray-900) 30%, transparent));
+}
+
+.fi-auth-top-banner-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.fi-auth-top-banner-form {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.fi-auth-top-banner.no-media .fi-auth-top-banner-media {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .fi-auth-top-banner-media {
+        height: 250px;
+    }
+
+    .fi-auth-top-banner-content {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* AuthDesigner Side Panel Layout Styles */
+
+.fi-auth-side-panel {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.fi-auth-side-panel-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.fi-auth-side-panel-media-wrapper {
+    position: absolute;
+    inset: 0;
+}
+
+.fi-auth-side-panel-image,
+.fi-auth-side-panel-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fi-auth-side-panel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 50%, color-mix(in srgb, var(--gray-900) 60%, transparent));
+}
+
+.fi-auth-side-panel-container {
+    position: relative;
+    z-index: 10;
+    margin-left: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.fi-auth-side-panel-form {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.fi-auth-side-panel.has-media .fi-auth-side-panel-form {
+    background-color: var(--gray-50);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--ring-shadow);
+}
+
+.dark .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
+    background-color: var(--gray-900);
+}
+
+.fi-auth-side-panel.no-media .fi-auth-side-panel-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 1024px) {
+    .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .dark .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
+        background-color: transparent;
+    }
+
+    .fi-auth-side-panel.has-media .fi-auth-side-panel-container {
+        width: 35%;
+        max-width: 500px;
+        min-height: 100vh;
+        padding: 3rem 2rem;
+        background-color: var(--gray-50);
+        box-shadow: -4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
+    }
+
+    .dark .fi-auth-side-panel.has-media .fi-auth-side-panel-container {
+        background-color: var(--gray-900);
+    }
+
+    .fi-auth-side-panel.has-media.media-right .fi-auth-side-panel-container {
+        margin-left: 0;
+        margin-right: auto;
+        box-shadow: 4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
+    }
+
+    .fi-auth-side-panel.has-media.media-left .fi-auth-side-panel-container {
+        margin-left: auto;
+        margin-right: 0;
+        box-shadow: -4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
+    }
+
+    .fi-auth-side-panel.no-media .fi-auth-side-panel-container {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* AuthDesigner Theme Switcher Styles */
+
+.fi-auth-theme-switcher-wrapper {
+    position: fixed;
+    z-index: 50;
+    background-color: var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 0.25rem;
+    box-shadow: var(--ring-shadow);
+    border: 1px solid var(--gray-200);
+}
+
+.dark .fi-auth-theme-switcher-wrapper {
+    background-color: var(--gray-900);
+    border: 1px solid var(--gray-800);
+}
+
+.fi-auth-theme-switcher-wrapper.fi-position-top-right {
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.fi-auth-theme-switcher-wrapper.fi-position-top-left {
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+.fi-auth-theme-switcher-wrapper.fi-position-bottom-right {
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+
+.fi-auth-theme-switcher-wrapper.fi-position-bottom-left {
+    bottom: 1.5rem;
+    left: 1.5rem;
+}

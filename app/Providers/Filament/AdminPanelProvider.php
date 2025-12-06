@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Pages\Dashboard;
 use App\Filament\Admin\Resources\Users\UserResource;
 use App\Filament\Admin\Widgets\LatestAccessLogs;
 use App\Models\User;
-use Awcodes\LightSwitch\Enums\Alignment;
-use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\Overlook\OverlookPlugin;
 use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
-use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
+use Caresome\FilamentAuthDesigner\AuthDesignerPlugin;
+use Caresome\FilamentAuthDesigner\Enums\AuthLayout;
+use Caresome\FilamentAuthDesigner\Enums\MediaDirection;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filafly\Icons\Phosphor\PhosphorIcons;
-use Filafly\Themes\Brisk\BriskTheme;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -27,13 +28,16 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Width;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
 
 final class AdminPanelProvider extends PanelProvider
 {
@@ -44,13 +48,21 @@ final class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->authGuard('web')
+            ->spa()
+            ->spaUrlExceptions([
+                Dashboard::class,
+            ])
             ->login()
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->maxContentWidth('7xl')
+            ->topbar(false)
             ->sidebarCollapsibleOnDesktop()
+            ->sidebarWidth('16rem')
+            ->maxContentWidth(Width::Full)
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
@@ -70,19 +82,14 @@ final class AdminPanelProvider extends PanelProvider
                     ->label('Administration'),
             ])
             ->plugins([
-                BriskTheme::make(),
+                FilamentAbyssThemePlugin::make(),
                 PhosphorIcons::make()->duotone(),
-                LightSwitchPlugin::make()
-                    ->position(Alignment::BottomCenter)
-                    ->enabledOn([
-                        'auth.login',
-                    ]),
-                AuthUIEnhancerPlugin::make()
-                    ->showEmptyPanelOnMobile(false)
-                    ->formPanelPosition('right')
-                    ->formPanelWidth('40%')
-                    ->emptyPanelBackgroundImageOpacity('70%')
-                    ->emptyPanelBackgroundImageUrl('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                AuthDesignerPlugin::make()
+                    ->login(
+                        layout: AuthLayout::Panel,
+                        media: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                        direction: MediaDirection::Left,
+                    )->themeToggle(),
                 BreezyCore::make()
                     ->myProfile(
                         hasAvatars: true,
@@ -90,6 +97,7 @@ final class AdminPanelProvider extends PanelProvider
                         userMenuLabel: 'Profile',
                     )
                     ->enableBrowserSessions(),
+                GlobalSearchModalPlugin::make(),
                 OverlookPlugin::make()
                     ->sort(2)
                     ->columns([
@@ -116,6 +124,7 @@ final class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Administration')
                     ->navigationSort(2)
                     ->navigationIcon(Phosphor::ShieldCheckDuotone),
+                FilamentLoggerPlugin::make(),
                 FilamentLogViewerPlugin::make()
                     ->navigationGroup('Administration')
                     ->navigationSort(4)
@@ -124,9 +133,6 @@ final class AdminPanelProvider extends PanelProvider
                     ->enabled(app()->environment('local'))
                     ->switchable(true)
                     ->users(fn () => User::pluck('email', 'name')->toArray()),
-            ])
-            ->resources([
-                config('filament-logger.activity_resource'),
             ])
             ->middleware([
                 EncryptCookies::class,

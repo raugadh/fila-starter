@@ -13,5 +13,7 @@ final class Dashboard extends BaseDashboard
 {
     protected static string|null|UnitEnum $navigationGroup = 'General';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static string|null|BackedEnum $navigationIcon = Phosphor::HouseDuotone;
 }
