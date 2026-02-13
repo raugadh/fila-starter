@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources\Users\Tables;
 
-use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Support\Enums\FontWeight;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -40,7 +40,7 @@ final class UsersTable
                         Tables\Columns\TextColumn::make('email')
                             ->copyable()
                             ->sortable()
-                            ->icon(Phosphor::EnvelopeDuotone)
+                            ->icon(Heroicon::Envelope)
                             ->searchable(),
                     ])
                         ->alignStart(),
@@ -54,12 +54,12 @@ final class UsersTable
                     Tables\Columns\Layout\Stack::make([
                         Tables\Columns\TextColumn::make('updated_at')
                             ->since()
-                            ->icon(Phosphor::CalendarBlankDuotone)
+                            ->icon(Heroicon::Calendar)
                             ->sortable()
                             ->searchable(),
                         Tables\Columns\TextColumn::make('created_at')
                             ->date()
-                            ->icon(Phosphor::CalendarBlankDuotone)
+                            ->icon(Heroicon::Calendar)
                             ->sortable()
                             ->searchable(),
                     ])

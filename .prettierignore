@@ -1,10 +1,6 @@
 /vendor
 /node_modules
-/public/build
-/public/css
-/public/js
-/public/hot
-/public/vendor
+/public
 /storage
 /bootstrap/cache
 /.idea

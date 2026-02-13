@@ -1,6 +1,5 @@
 {
     "preset": "laravel",
-    "parallel": true,
     "notPath": ["tests/TestCase.php"],
     "rules": {
         "array_push": true,

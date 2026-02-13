@@ -7,6 +7,7 @@ namespace App\Filament\Admin\Resources\Users\Pages;
 use App\Filament\Admin\Resources\Users\UserResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Support\Icons\Heroicon;
 
 final class ListUsers extends ListRecords
 {
@@ -15,7 +16,9 @@ final class ListUsers extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label('Add New User')
+                ->icon(Heroicon::Plus),
         ];
     }
 }

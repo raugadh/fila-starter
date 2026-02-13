@@ -17,9 +17,9 @@ Preview DashBoard:
 
 ### Packages
 
-[Laravel](https://github.com/laravel/laravel)  
-[Livewire](https://github.com/livewire/livewire)  
-[Filament](https://github.com/filamentphp/filament)
+[Laravel v12](https://github.com/laravel/laravel)  
+[Livewire v4](https://github.com/livewire/livewire)  
+[Filament v5](https://github.com/filamentphp/filament)
 
 #### Packages Installed/Pre-configured
 
@@ -29,15 +29,12 @@ Preview DashBoard:
     - caresome/filament-auth-designer
     - charrafimed/global-search-modal
     - dutchcodingcompany/filament-developer-logins
-    - filafly/filament-phosphor-icons
-    - gboquizosanchez/filament-log-viewer
     - jacobtims/filament-logger
     - jeffgreco13/filament-breezy
     - marcelweidum/filament-expiration-notice
-    - osamanagi/filament-abyss-theme (Theme)
+    - openplain/filament-shadcn-theme (Theme)
 
 - Other Packages
-    - barryvdh/laravel-ide-helper
     - barryvdh/laravel-debugbar
     - laravel/boost
 
@@ -47,12 +44,13 @@ Preview DashBoard:
 | ----------- | ---------------- |
 | **2.x**     | **_3.x_**        |
 | **3.x**     | **4.x**          |
+| **4.x**     | **5.x**          |
 
 ### Installation
 
 #### Create New Project
 
-```fish
+```properties
 composer create-project --prefer-dist raugadh/fila-starter example-app
 ```
 
@@ -64,47 +62,59 @@ composer create-project --prefer-dist raugadh/fila-starter example-app
     - Add ASSET_PREFIX if deployed application in sub-folder
     - Link Storage
 
-        ```fish
+        ```properties
         php artisan storage:link
         ```
 
 - Initialize Project
 
-    ```fish
+    ```properties
     php artisan project:init
     ```
 
 - Update Permissions and Migrations
     - Whenever new Resource , Page or migration is Added Run update command to migrate and create permissions.
-        ```fish
+        ```properties
         php artisan project:update
         ```
 
 - build vite assets
 
-    ```fish
-    bun install && bun run build
+    ```properties
+    npm install
     ```
 
-- Clear/Generate Cache
+    ```properties
+    npm run build
+    ```
 
-    ```fish
+- Clear/Generate New Cache
+
+    ```properties
     php artisan project:cache
-    ```
-
-- Generate IDE Helpers
-
-    ```fish
-    php artisan dev:init
     ```
 
 - Configure [Laravel Boost](https://github.com/laravel/boost)
 
-    ```fish
+    ```properties
     php artisan boost:install
     ```
 
 ##### Make sure to check custom console commands yourself and change them based on your requirements.
+
+### Lint & Fix
+
+- Pint ('test') & Prettier('check')
+
+    ```properties
+    composer lint
+    ```
+
+- Pint & Prettier('write')
+
+    ```properties
+    composer fix
+    ```
 
 #### Enjoy
 

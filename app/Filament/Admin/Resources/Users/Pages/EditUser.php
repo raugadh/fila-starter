@@ -8,6 +8,7 @@ use App\Filament\Admin\Resources\Users\UserResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Support\Icons\Heroicon;
 
 final class EditUser extends EditRecord
 {
@@ -21,8 +22,12 @@ final class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            ViewAction::make(),
-            DeleteAction::make(),
+            ViewAction::make()
+                ->label('View Details')
+                ->icon(Heroicon::Eye),
+            DeleteAction::make()
+                ->label('Delete')
+                ->icon(Heroicon::Trash),
         ];
     }
 }

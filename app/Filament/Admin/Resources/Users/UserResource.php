@@ -13,9 +13,9 @@ use App\Filament\Admin\Resources\Users\Schemas\UserInfolist;
 use App\Filament\Admin\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
-use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
 
@@ -23,7 +23,7 @@ final class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Phosphor::UsersDuotone;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Users;
 
     protected static string|null|UnitEnum $navigationGroup = 'Administration';
 

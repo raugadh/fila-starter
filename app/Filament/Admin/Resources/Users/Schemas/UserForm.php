@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources\Users\Schemas;
 
-use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Hash;
 
 final class UserForm
@@ -35,14 +35,14 @@ final class UserForm
                             ->columnSpanFull(),
                         TextInput::make('email')
                             ->required()
-                            ->prefixIcon(Phosphor::EnvelopeDuotone)
+                            ->prefixIcon(Heroicon::Envelope)
                             ->email()
                             ->columnSpanFull(),
                         TextInput::make('password')
                             ->password()
                             ->confirmed()
                             ->revealable()
-                            ->prefixIcon(Phosphor::PasswordDuotone)
+                            ->prefixIcon(Heroicon::FingerPrint)
                             ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                             ->dehydrated(fn ($state): bool => filled($state))
                             ->required(fn (string $context): bool => $context === 'create')
@@ -51,12 +51,12 @@ final class UserForm
                             ->required(fn (string $context): bool => $context === 'create')
                             ->password()
                             ->revealable()
-                            ->prefixIcon(Phosphor::PasswordDuotone)
+                            ->prefixIcon(Heroicon::FingerPrint)
                             ->columnSpan(1),
                         Select::make('roles')
                             ->label('Roles')
                             ->relationship('roles', 'name')
-                            ->prefixIcon(Phosphor::ShieldCheckDuotone)
+                            ->prefixIcon(Heroicon::ShieldCheck)
                             ->multiple()
                             ->preload()
                             ->searchable()
