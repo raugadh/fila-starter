@@ -10,7 +10,7 @@ return [
 
     'nav.group' => 'Administration',
     'nav.log.label' => 'Activity Log',
-    'nav.log.icon' => 'phosphor-file-duotone',
+    'nav.log.icon' => 'heroicon-o-clipboard-document-list',
     'resource.label.log' => 'Activity log',
     'resource.label.logs' => 'Activity logs',
     'resource.label.user' => 'User',

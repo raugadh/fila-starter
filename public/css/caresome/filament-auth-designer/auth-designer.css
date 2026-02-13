@@ -6,301 +6,222 @@
     text-align: left;
 }
 
-/* AuthDesigner Split-Screen Layout Styles */
+/* ============================================
+   Unified Auth Layout System
+   ============================================ */
 
-.fi-auth-split-screen {
+.fi-auth-layout {
     display: flex;
     min-height: 100vh;
+}
+
+/* No media - centered form */
+.fi-auth-layout.no-media {
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.fi-auth-layout.no-media .fi-auth-content-section {
+    width: 100%;
+    max-width: 28rem;
+}
+
+/* ============================================
+   Media Section - Common Styles
+   ============================================ */
+
+.fi-auth-media-wrapper {
+    position: absolute;
+    inset: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+.fi-auth-media {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fi-auth-media-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.fi-auth-media-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    padding: 2rem;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   Horizontal Positions (Left / Right)
+   ============================================ */
+
+.fi-auth-layout.media-left,
+.fi-auth-layout.media-right {
+    flex-direction: row;
+}
+
+.fi-auth-layout.media-left .fi-auth-media-section,
+.fi-auth-layout.media-right .fi-auth-media-section {
+    position: relative;
+    display: none;
+    width: var(--media-size, 50%);
+    flex-shrink: 0;
     overflow: hidden;
 }
 
-.fi-auth-split-form-side {
+.fi-auth-layout.media-left .fi-auth-media-overlay,
+.fi-auth-layout.media-right .fi-auth-media-overlay {
+    background: linear-gradient(
+        to top,
+        color-mix(in srgb, var(--gray-900) 50%, transparent),
+        transparent
+    );
+    backdrop-filter: blur(var(--ad-blur, 0px));
+}
+
+.fi-auth-layout.media-left .fi-auth-content-section,
+.fi-auth-layout.media-right .fi-auth-content-section {
     display: flex;
-    width: 100%;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 3rem 1.5rem;
 }
 
-.fi-auth-split-form-container {
+.fi-auth-layout.media-left .fi-auth-form-container,
+.fi-auth-layout.media-right .fi-auth-form-container {
     width: 100%;
     max-width: 28rem;
 }
 
-.fi-auth-split-image-side {
-    position: relative;
-    display: none;
-}
-
-.fi-auth-split-image-wrapper {
-    position: absolute;
-    inset: 0;
-}
-
-.fi-auth-split-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.fi-auth-split-image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, color-mix(in srgb, var(--gray-900) 50%, transparent), transparent);
+.fi-auth-layout.media-right {
+    flex-direction: row-reverse;
 }
 
 @media (min-width: 1024px) {
-    .fi-auth-split-screen.has-media .fi-auth-split-form-side {
-        width: 50%;
-        padding: 3rem;
-    }
-
-    .fi-auth-split-screen.has-media .fi-auth-split-image-side {
+    .fi-auth-layout.media-left .fi-auth-media-section,
+    .fi-auth-layout.media-right .fi-auth-media-section {
         display: block;
-        width: 50%;
     }
 
-    .fi-auth-split-screen.has-media.media-left {
-        flex-direction: row-reverse;
-    }
-
-    .fi-auth-split-screen.no-media .fi-auth-split-form-side {
-        width: 100%;
+    .fi-auth-layout.media-left .fi-auth-content-section,
+    .fi-auth-layout.media-right .fi-auth-content-section {
         padding: 3rem;
     }
 }
 
-/* AuthDesigner Minimal Layout Styles */
+/* ============================================
+   Vertical Positions (Top / Bottom)
+   ============================================ */
 
-.fi-auth-minimal {
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-}
-
-.fi-auth-minimal-container {
-    width: 100%;
-    max-width: 28rem;
-}
-
-/* AuthDesigner FullScreen Layout Styles */
-
-.fi-auth-fullscreen {
-    position: relative;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-}
-
-.fi-auth-fullscreen-background {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-}
-
-.fi-auth-fullscreen-media {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.fi-auth-fullscreen-overlay {
-    position: absolute;
-    inset: 0;
-    background: color-mix(in srgb, var(--gray-950) 40%, transparent);
-    backdrop-filter: blur(var(--blur-overlay, 0px));
-}
-
-.fi-auth-fullscreen-content {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 28rem;
-}
-
-.fi-auth-fullscreen-section {
-    backdrop-filter: blur(var(--blur-content, 0px));
-    box-shadow: 0 20px 60px color-mix(in srgb, var(--gray-950) 30%, transparent);
-}
-
-/* AuthDesigner Top Banner Layout Styles */
-
-.fi-auth-top-banner {
-    display: flex;
+.fi-auth-layout.media-top,
+.fi-auth-layout.media-bottom {
     flex-direction: column;
-    min-height: 100vh;
 }
 
-.fi-auth-top-banner-media {
+.fi-auth-layout.media-bottom {
+    flex-direction: column-reverse;
+}
+
+.fi-auth-layout.media-top .fi-auth-media-section,
+.fi-auth-layout.media-bottom .fi-auth-media-section {
     position: relative;
     width: 100%;
-    height: 200px;
+    flex: 0 0 var(--media-size, 250px);
     overflow: hidden;
 }
 
-.fi-auth-top-banner-wrapper {
-    position: absolute;
-    inset: 0;
+.fi-auth-layout.media-top .fi-auth-media-overlay {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        color-mix(in srgb, var(--gray-900) 30%, transparent)
+    );
+    backdrop-filter: blur(var(--ad-blur, 0px));
 }
 
-.fi-auth-top-banner-image,
-.fi-auth-top-banner-video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+.fi-auth-layout.media-bottom .fi-auth-media-overlay {
+    background: linear-gradient(
+        to top,
+        transparent,
+        color-mix(in srgb, var(--gray-900) 30%, transparent)
+    );
+    backdrop-filter: blur(var(--ad-blur, 0px));
 }
 
-.fi-auth-top-banner-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--gray-900) 30%, transparent));
-}
-
-.fi-auth-top-banner-content {
+.fi-auth-layout.media-top .fi-auth-content-section,
+.fi-auth-layout.media-bottom .fi-auth-content-section {
     display: flex;
-    flex: 1;
+    flex: 1 1 0;
+    min-height: 0;
     align-items: center;
     justify-content: center;
     padding: 2rem 1.5rem;
+    overflow: auto;
 }
 
-.fi-auth-top-banner-form {
+.fi-auth-layout.media-top .fi-auth-form-container,
+.fi-auth-layout.media-bottom .fi-auth-form-container {
     width: 100%;
     max-width: 28rem;
 }
 
-.fi-auth-top-banner.no-media .fi-auth-top-banner-media {
-    display: none;
-}
-
 @media (min-width: 768px) {
-    .fi-auth-top-banner-media {
-        height: 250px;
-    }
-
-    .fi-auth-top-banner-content {
+    .fi-auth-layout.media-top .fi-auth-content-section,
+    .fi-auth-layout.media-bottom .fi-auth-content-section {
         padding: 3rem 1.5rem;
     }
 }
 
-/* AuthDesigner Side Panel Layout Styles */
+/* ============================================
+   Cover Position (Overlay / Fullscreen)
+   ============================================ */
 
-.fi-auth-side-panel {
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
+.fi-auth-layout.media-cover {
     position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
 }
 
-.fi-auth-side-panel-media {
+.fi-auth-layout.media-cover .fi-auth-media-section {
     position: absolute;
     inset: 0;
     z-index: 0;
 }
 
-.fi-auth-side-panel-media-wrapper {
-    position: absolute;
-    inset: 0;
+.fi-auth-layout.media-cover .fi-auth-media-overlay {
+    background: color-mix(in srgb, var(--gray-950) 40%, transparent);
+    backdrop-filter: blur(var(--ad-blur, 0px));
 }
 
-.fi-auth-side-panel-image,
-.fi-auth-side-panel-video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.fi-auth-side-panel-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent 50%, color-mix(in srgb, var(--gray-900) 60%, transparent));
-}
-
-.fi-auth-side-panel-container {
+.fi-auth-layout.media-cover .fi-auth-content-section {
     position: relative;
     z-index: 10;
-    margin-left: auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
-}
-
-.fi-auth-side-panel-form {
     width: 100%;
     max-width: 28rem;
 }
 
-.fi-auth-side-panel.has-media .fi-auth-side-panel-form {
-    background-color: var(--gray-50);
-    padding: 2rem;
-    border-radius: 0.75rem;
-    box-shadow: var(--ring-shadow);
+.fi-auth-layout.media-cover .fi-auth-card {
+    backdrop-filter: blur(calc(var(--ad-blur, 0px) * 2.5));
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--gray-950) 30%, transparent);
 }
 
-.dark .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
-    background-color: var(--gray-900);
-}
-
-.fi-auth-side-panel.no-media .fi-auth-side-panel-container {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-@media (min-width: 1024px) {
-    .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
-        background-color: transparent;
-        padding: 0;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    .dark .fi-auth-side-panel.has-media .fi-auth-side-panel-form {
-        background-color: transparent;
-    }
-
-    .fi-auth-side-panel.has-media .fi-auth-side-panel-container {
-        width: 35%;
-        max-width: 500px;
-        min-height: 100vh;
-        padding: 3rem 2rem;
-        background-color: var(--gray-50);
-        box-shadow: -4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
-    }
-
-    .dark .fi-auth-side-panel.has-media .fi-auth-side-panel-container {
-        background-color: var(--gray-900);
-    }
-
-    .fi-auth-side-panel.has-media.media-right .fi-auth-side-panel-container {
-        margin-left: 0;
-        margin-right: auto;
-        box-shadow: 4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
-    }
-
-    .fi-auth-side-panel.has-media.media-left .fi-auth-side-panel-container {
-        margin-left: auto;
-        margin-right: 0;
-        box-shadow: -4px 0 24px color-mix(in srgb, var(--gray-950) 15%, transparent);
-    }
-
-    .fi-auth-side-panel.no-media .fi-auth-side-panel-container {
-        width: 100%;
-        max-width: none;
-    }
-}
-
-/* AuthDesigner Theme Switcher Styles */
+/* ============================================
+   Theme Switcher
+   ============================================ */
 
 .fi-auth-theme-switcher-wrapper {
     position: fixed;
@@ -317,22 +238,9 @@
     border: 1px solid var(--gray-800);
 }
 
-.fi-auth-theme-switcher-wrapper.fi-position-top-right {
-    top: 1.5rem;
-    right: 1.5rem;
-}
-
-.fi-auth-theme-switcher-wrapper.fi-position-top-left {
-    top: 1.5rem;
-    left: 1.5rem;
-}
-
-.fi-auth-theme-switcher-wrapper.fi-position-bottom-right {
-    bottom: 1.5rem;
-    right: 1.5rem;
-}
-
-.fi-auth-theme-switcher-wrapper.fi-position-bottom-left {
-    bottom: 1.5rem;
-    left: 1.5rem;
+.fi-auth-theme-switcher-wrapper {
+    top: var(--ad-theme-switcher-top, auto);
+    right: var(--ad-theme-switcher-right, auto);
+    bottom: var(--ad-theme-switcher-bottom, auto);
+    left: var(--ad-theme-switcher-left, auto);
 }

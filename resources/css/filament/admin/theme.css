@@ -1,40 +1,6 @@
-@import '../../../../vendor/osamanagi/filament-abyss-theme/resources/css/theme.css';
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
 
-@source '../../../../app/Filament/Admin/**/*';
-@source '../../../../resources/views/filament/admin/**/*';
-@source '../../../../vendor/gboquizosanchez/filament-log-viewer/resources/views/**/*.blade.php';
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
 @source '../../../../vendor/jeffgreco13/filament-breezy/resources/**/*';
 @source '../../../../vendor/awcodes/overlook/resources/**/*.blade.php';
-
-[x-cloak] {
-    display: none !important;
-}
-
-.grid-image .filepond--item {
-    width: calc(33.3% - 0.5em);
-}
-
-@media (min-width: 1024px) {
-    .filament-input-group > .grid {
-        gap: 0;
-    }
-
-    .filament-input-group > .grid > :first-child .filament-forms-input,
-    .filament-input-group > .grid > :first-child .filament-forms-input .choices__inner {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    .filament-input-group > .grid > :not(:first-child):not(:last-child) .filament-forms-input,
-    .filament-input-group > .grid > :not(:first-child):not(:last-child) .filament-forms-input .choices__inner {
-        border-radius: 0;
-        border-left: none;
-    }
-
-    .filament-input-group > .grid > :last-child .filament-forms-input,
-    .filament-input-group > .grid > :last-child .filament-forms-input .choices__inner {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-left: none;
-    }
-}

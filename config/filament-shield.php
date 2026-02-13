@@ -144,7 +144,7 @@ return [
 
     'localization' => [
         'enabled' => false,
-        'key' => 'filament-shield::filament-shield',
+        'key' => 'filament-shield::filament-shield.resource_permission_prefixes_labels',
     ],
 
     /*
@@ -191,7 +191,6 @@ return [
         'exclude' => [
             Filament\Pages\Dashboard::class,
             App\Filament\Admin\Pages\Dashboard::class,
-            Boquizo\FilamentLogViewer\Pages\ViewLog::class,
         ],
     ],
 

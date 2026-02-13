@@ -11,14 +11,10 @@ use App\Models\User;
 use Awcodes\Overlook\OverlookPlugin;
 use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Caresome\FilamentAuthDesigner\AuthDesignerPlugin;
-use Caresome\FilamentAuthDesigner\Enums\AuthLayout;
-use Caresome\FilamentAuthDesigner\Enums\MediaDirection;
+use Caresome\FilamentAuthDesigner\Enums\MediaPosition;
 use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
-use Filafly\Icons\Phosphor\Enums\Phosphor;
-use Filafly\Icons\Phosphor\PhosphorIcons;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -27,8 +23,9 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
+use Filament\Support\Colors\Color as FilamentColor;
 use Filament\Support\Enums\Width;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -37,7 +34,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jacobtims\FilamentLogger\FilamentLoggerPlugin;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
-use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
+use Openplain\FilamentShadcnTheme\Color;
 
 final class AdminPanelProvider extends PanelProvider
 {
@@ -53,20 +50,21 @@ final class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->login()
-            ->defaultThemeMode(ThemeMode::Light)
-            ->colors([
-                'primary' => Color::Blue,
-            ])
             ->topbar(false)
             ->sidebarCollapsibleOnDesktop()
             ->sidebarWidth('16rem')
             ->maxContentWidth(Width::Full)
-            ->unsavedChangesAlerts()
             ->databaseTransactions()
+            ->defaultThemeMode(ThemeMode::Light)
+            ->colors([
+                'primary' => Color::adaptive(
+                    lightColor: FilamentColor::Blue,
+                    darkColor: FilamentColor::Sky
+                ),
+            ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
-                //
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
@@ -82,14 +80,14 @@ final class AdminPanelProvider extends PanelProvider
                     ->label('Administration'),
             ])
             ->plugins([
-                FilamentAbyssThemePlugin::make(),
-                PhosphorIcons::make()->duotone(),
                 AuthDesignerPlugin::make()
-                    ->login(
-                        layout: AuthLayout::Panel,
-                        media: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                        direction: MediaDirection::Left,
-                    )->themeToggle(),
+                    ->login(fn ($config) => $config
+                        ->media('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
+                        ->mediaPosition(MediaPosition::Left)
+                        ->mediaSize('70%')
+                        ->blur(1)
+                    )
+                    ->themeToggle('90%', '50%'),
                 BreezyCore::make()
                     ->myProfile(
                         hasAvatars: true,
@@ -123,12 +121,8 @@ final class AdminPanelProvider extends PanelProvider
                     ->navigationLabel('Roles & Permissions')
                     ->navigationGroup('Administration')
                     ->navigationSort(2)
-                    ->navigationIcon(Phosphor::ShieldCheckDuotone),
+                    ->navigationIcon(Heroicon::ShieldCheck),
                 FilamentLoggerPlugin::make(),
-                FilamentLogViewerPlugin::make()
-                    ->navigationGroup('Administration')
-                    ->navigationSort(4)
-                    ->navigationIcon(Phosphor::FileArchiveDuotone),
                 FilamentDeveloperLoginsPlugin::make()
                     ->enabled(app()->environment('local'))
                     ->switchable(true)

@@ -1,0 +1,6 @@
+{
+    "agents": ["opencode"],
+    "herd_mcp": false,
+    "mcp": true,
+    "sail": false
+}

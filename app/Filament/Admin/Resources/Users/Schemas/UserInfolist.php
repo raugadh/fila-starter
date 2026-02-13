@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources\Users\Schemas;
 
-use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 final class UserInfolist
 {
@@ -31,24 +31,24 @@ final class UserInfolist
                         TextEntry::make('roles.name')
                             ->label('Roles')
                             ->badge()
-                            ->icon(Phosphor::ShieldCheckDuotone)
+                            ->icon(Heroicon::ShieldCheck)
                             ->placeholder('-')
                             ->columnSpan('1'),
                         TextEntry::make('email')
                             ->label('Email address')
-                            ->icon(Phosphor::EnvelopeDuotone)
+                            ->icon(Heroicon::Envelope)
                             ->columnSpanFull(),
                         Grid::make(2)
                             ->schema([
                                 TextEntry::make('created_at')
                                     ->dateTime()
                                     ->placeholder('-')
-                                    ->icon(Phosphor::CalendarBlankDuotone)
+                                    ->icon(Heroicon::Calendar)
                                     ->columnSpan(1),
                                 TextEntry::make('updated_at')
                                     ->dateTime()
                                     ->placeholder('-')
-                                    ->icon(Phosphor::CalendarBlankDuotone)
+                                    ->icon(Heroicon::Calendar)
                                     ->columnSpan(1),
                             ])->columnSpanFull(),
                     ])->columnSpan('5'),
