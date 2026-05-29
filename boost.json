@@ -1,6 +1,16 @@
 {
     "agents": ["opencode"],
+    "cloud": false,
+    "guidelines": true,
     "herd_mcp": false,
     "mcp": true,
-    "sail": false
+    "packages": ["filament/filament", "barryvdh/laravel-debugbar"],
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "livewire-development",
+        "pest-testing",
+        "tailwindcss-development",
+        "debug-using-debugbar"
+    ]
 }
