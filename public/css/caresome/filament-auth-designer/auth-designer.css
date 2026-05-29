@@ -1,8 +1,8 @@
-.fi-simple-header {
+.fi-auth-layout .fi-simple-header {
     align-items: start;
 }
 
-.fi-simple-header-heading {
+.fi-auth-layout .fi-simple-header-heading {
     text-align: left;
 }
 
