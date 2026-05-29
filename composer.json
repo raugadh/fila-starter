@@ -20,8 +20,8 @@
         "filament/filament": "^5.2",
         "jacobtims/filament-logger": "^1.1",
         "jeffgreco13/filament-breezy": "^3.1",
-        "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1",
+        "laravel/framework": "^13.0",
+        "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.1",
         "marcelweidum/filament-expiration-notice": "^1.0",
         "openplain/filament-shadcn-theme": "^1.1"
@@ -29,7 +29,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.0",
         "fakerphp/faker": "^1.23",
-        "laravel/boost": "2.0",
+        "laravel/boost": "^2.1",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
